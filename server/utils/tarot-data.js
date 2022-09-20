@@ -1,4 +1,4 @@
-//Export card data
+//Export cardData
 const cardData = [
     {
       "name": "The Fool",
