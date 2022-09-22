@@ -2,25 +2,18 @@
 const db = require('../config/connection');
 const fs = require('fs')
 // TODO: import models
-//const { Card } = require('../models');
-
+const { Card } = require('../models');
 // TODO: import tarot-card-data
-// TODO: JSON.stringify(cardData)
-//TODO: Deck.collection.insertMany(Cards)
-
-
-//import cards from "./tarot-data.json"
-//const cards = require('./tarot-data.json')
 const cards = JSON.parse(fs.readFileSync(`${__dirname}/tarot-data.json`, 'utf-8'))
 
-
+//TODO: Deck.collection.insertMany(Cards)
+//TODO: User.collection.insertMany(users)
 
 db.once('open', async () => {
     try {
-        await resetCollection("card", cards)
-        //await resetCollection("deck", dek) ?
-        //TODO: User.collection.insertMany(users)
-        console.log('database seeded successfully');
+        await Card.deleteMany({})
+        await Card.insertMany(cards)
+        console.log('cards seeded successfully');
         process.exit(0);
     } catch (error) {
         console.error(error)
@@ -28,6 +21,8 @@ db.once('open', async () => {
     }
 })
 
+//await resetCollection("cards", cards)
+//await resetCollection("deck", dek) 
 async function resetCollection(collectionName, data){
     try {
         //Dropping collection(card) if they exist
@@ -44,6 +39,7 @@ async function resetCollection(collectionName, data){
 
         console.log(`Inserting docs into collection ${collectionName}`)
         await db.collection(collectionName).insertMany(data)
+        
 
     } catch (error) {
         throw error;

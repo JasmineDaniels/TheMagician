@@ -3,16 +3,21 @@ const { Schema, Types, model } = require("mongoose");
 const cardSchema = new Schema(
     {
         //cards: JSON,
-        name: String,
+        name: {
+            type: String,
+            // required: true,
+            // unique: true,
+        },
         number: String,
         arcana: String,
         img: String,
-        fortune_telling: String,
-        meanings: String,
-        Archetype: String,
+        fortune_telling: Array,
+        keywords: Array,
+        meanings: Object,
         Numerolgy: String,
-        Elemental: String,
-
+        Astrology: String,
+        Affirmation: String,
+        Questions: Array,
     },
     {
         toJSON: {
@@ -22,6 +27,10 @@ const cardSchema = new Schema(
         id: false
     },  
 )
+
+cardSchema.methods.shuffleCards = function (){
+    return this.cards.sort(( a, b) => Math.random() - .5)    
+}
 
 const Card = model("card", cardSchema)
 
