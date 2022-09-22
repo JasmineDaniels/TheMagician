@@ -2,10 +2,10 @@
 const db = require('../config/connection');
 const fs = require('fs')
 // TODO: import models
-const { Card } = require('../models');
+const { Card, User } = require('../models');
 // TODO: import tarot-card-data
 const cards = JSON.parse(fs.readFileSync(`${__dirname}/tarot-data.json`, 'utf-8'))
-
+const users = require('./user-seeds')
 //TODO: Deck.collection.insertMany(Cards)
 //TODO: User.collection.insertMany(users)
 
@@ -14,6 +14,10 @@ db.once('open', async () => {
         await Card.deleteMany({})
         await Card.insertMany(cards)
         console.log('cards seeded successfully');
+
+        await User.insertMany(users)
+        console.log('users seeded successfully');
+
         process.exit(0);
     } catch (error) {
         console.error(error)

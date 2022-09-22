@@ -32,8 +32,9 @@ router.post('/deck', async (req, res) => {
         await Deck.deleteMany({}) 
         await Deck.create(cards)
         const getDeck = await Deck.find({}).lean()
-        //const test = new Deck() 
+        //const test = new Deck(getDeck) 
         //const shuffle = getDeck.shuffleCards()
+        //const shuffle = test.shuffleCards()
 
         if (!getDeck){
             res.status(404).json({message: `No cards in Deck.`})
