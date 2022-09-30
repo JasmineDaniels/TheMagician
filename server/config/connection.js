@@ -2,7 +2,7 @@ const { connect, connection } = require('mongoose');
 require('dotenv').config()
 
 
-connect( process.env.MongoDBURI || `mongodb://127.0.0.1:27017/theMagicianDB`, {
+connect( process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/theMagicianDB`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
