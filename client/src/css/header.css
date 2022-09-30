@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Magic';
+    src: url(../fonts/Piedra-Regular.ttf) format('truetype');
+}
+
+.header-title {
+    font-family: 'Magic', 'sans-serif';
+    font-size: 115px;
+    margin-top: 130px !important
+}

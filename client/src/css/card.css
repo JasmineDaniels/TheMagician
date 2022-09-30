@@ -1,0 +1,17 @@
+
+.card {
+    height: 200px;
+    width: 250px;
+    /* background-color: rgb(247, 235, 16) !important */
+    background-color: transparent !important
+}
+
+
+.card__face--front {
+    background-image: url("../images/m01.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 425px;
+    width: 250px;
+    /* background-color: rgb(247, 235, 16) !important */
+}

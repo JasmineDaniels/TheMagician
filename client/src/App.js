@@ -1,7 +1,10 @@
+import Card from "./components/Card"
+import Header from "./components/Header"
 export default function App (){
     return (
         <div>
-            <h1> Connected </h1>
+            <Header/>
+            <Card/>
         </div>
     )
 }
