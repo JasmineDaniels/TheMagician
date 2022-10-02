@@ -1,10 +1,9 @@
-import Card from "./components/Card"
-import Header from "./components/Header"
+import UIContainer from "./components/UIContainer";
+
 export default function App (){
     return (
         <div>
-            <Header/>
-            <Card/>
+            <UIContainer/>
         </div>
     )
 }

@@ -3,8 +3,17 @@
     src: url(../fonts/Piedra-Regular.ttf) format('truetype');
 }
 
+.header-bg {
+    background-color: rgb(250, 213, 143);
+    border-radius: 20px 20px;
+    height: 150px;
+    /* border-width: 20px !important;
+    border-color: black !important; */
+    margin-top: 145px !important
+}
+
 .header-title {
     font-family: 'Magic', 'sans-serif';
-    font-size: 115px;
-    margin-top: 130px !important
+    font-size: 115px !important
+    /* margin-top: 150px !important */
 }
