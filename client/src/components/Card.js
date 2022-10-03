@@ -1,19 +1,30 @@
+import React, { useState } from 'react'
 import '../css/card.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import c04 from '../images/c04.jpg'
 import m01 from '../images/m01.jpg'
+
+
 export default function Card (){
+    let [flip, setFlip] = useState('false')
+
+    const handleClick = () => {
+        setFlip(!flip);
+
+        //axios get card = card
+        //axios post card back + info to results  
+    }
+
     return (
         <Container>
             <Row >
                 <Col md='4'>
-                    <div className='card '>
-                        <div className='card__inner'>
+                    <div className='card'>
+                        <div className={flip ? "card__inner" : 'card__inner is-flipped'} >
                             <div className='card__face card__face--front'>
-                                
-                                <img src={m01} alt='card-back' className='card-fit'></img>
+                                <img src={m01} alt='card-back' className='card-fit' onClick={handleClick}></img>
                             </div>
                             <div className='card__face card__face--back'>
                                 

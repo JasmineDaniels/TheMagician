@@ -5,6 +5,8 @@
     margin: 100px auto 0;
     height: 425px;
     width: 250px;
+    cursor: pointer;
+    perspective: 400px;
     /* border: none; */
     /* background-color: rgb(247, 235, 16) !important */
     background-color: transparent !important
@@ -19,7 +21,7 @@
     position: relative;
 }
 
-.card__inner.is-fliiped {
+.is-flipped {
     transform: rotateY(180deg);
 }
 
