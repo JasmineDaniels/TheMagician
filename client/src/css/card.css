@@ -2,7 +2,8 @@
 .card {
     /* height: 200px;
     width: 250px; */
-    margin: 100px auto 0;
+    /* margin: 100px auto 0; */
+    margin: 50px 0px 450px ;
     height: 425px;
     width: 250px;
     cursor: pointer;
