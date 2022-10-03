@@ -1,6 +1,6 @@
 import '../css/nav.css'
 
-function Nav (){
+function Nav ({ currentPage, handlePageChange }){
     return(
         <div className="container my-3">
             <nav className="navbar navbar-expand-lg navbar-dark  ">
@@ -11,16 +11,21 @@ function Nav (){
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                         <li className="nav-item mx-3">
-                            <a className="nav-link mx-3" aria-current="page" href="#">HOME</a>
+                            <a className={currentPage === 'HOME' ? "nav-link active" : "nav-link"} 
+                            aria-current="page" 
+                            href="#HOME"
+                            onClick={() => handlePageChange('HOME')}>HOME</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className="nav-link mx-3" href="#">PLAY</a>
+                            <a className={currentPage === 'PLAY' ? "nav-link active" : "nav-link"} 
+                            href="#PLAY"
+                            onClick={() => handlePageChange('PLAY')}>PLAY</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className="nav-link mx-3" href="#">PORTAL</a>
+                            <a className="nav-link mx-3" href="#PORTAL">PORTAL</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className="nav-link mx-3" href="#">SIGN IN</a>
+                            <a className="nav-link mx-3" href="#SIGNIN">SIGN IN</a>
                         </li>
                     
                     </ul>

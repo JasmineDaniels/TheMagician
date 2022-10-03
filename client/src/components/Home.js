@@ -1,0 +1,7 @@
+export default function Home (){
+    return (
+        <div>
+            <h1 id="HOME">HOME</h1>
+        </div>
+    )
+}
