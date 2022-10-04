@@ -1,5 +1,6 @@
 [
     {
+        "id": "1",
       "name": "The Fool",
       "number": "0",
       "arcana": "Major Arcana",
@@ -45,6 +46,7 @@
       "Questions" : ["What would I do if I felt free to take a leap?","How willing am I to be vulnerable and open?","How might past experiences help in this new situation?"]       	
     },
     {
+        "id": "2",
       "name": "The Magician",
       "number": "1",
       "arcana": "Major Arcana",
@@ -84,6 +86,7 @@
 		"Questions" : ["What am I empowered to do?","How might my abilities come into play?","To what extent am I making the most of my talents?"]
     },
     {
+        "id": "3",
       "name": "The High Priestess",
       "number": "2",
       "arcana": "Major Arcana",
@@ -127,6 +130,7 @@
 	  "Questions" : ["What might a rebel against tradition do?","What isn't being said or revealed?","What could be achieved by observing and reflecting?"]
     },
     {
+        "id": "4",
       "name": "The Empress",
       "number": "3",
       "arcana": "Major Arcana",
@@ -171,6 +175,7 @@
 	  "Questions" : ["What would a concerned and capable mother do?","What can I do that would emphasize growth?","How can I celebrate my own sensuality and sexuality?"]
     },
     {
+        "id": "5",
       "name": "The Emperor",
       "number": "4",
       "arcana": "Major Arcana",
@@ -212,6 +217,7 @@
 	  "Questions" : ["How does the issue of control or regulation impact this situation?","What would a compassionate but strict father do?","What needs more control?"]
     },
     {
+        "id": "6",
       "name": "The Hierophant",
       "number": "5",
       "arcana": "Major Arcana",
@@ -255,6 +261,7 @@
 	  "Questions" : ["What role might tradition or religion play in this situation?","Who authored the rules? Who enforces them? Why?","How might an experienced guide impact this situation?"]
     },
     {
+        "id": "7",
       "name": "The Lovers",
       "number": "6",
       "arcana": "Major Arcana",
@@ -296,6 +303,7 @@
 	  "Questions" : ["What guides my choices?","What is my heart leading me to do?","How might this decision transform me as a person?"]
     },
     {
+        "id": "8",
       "name": "The Chariot",
       "number": "7",
       "arcana": "Major Arcana",
@@ -336,6 +344,7 @@
 	  "Questions" : ["To what extent have I arrived? What will my next challenge be?","How can I use past achievements to their best advantage?","What would the criteria for real and meaningful success be?"]
     },
     {
+        "id": "9",
       "name": "Strength",
       "number": "8",
       "arcana": "Major Arcana",
@@ -375,6 +384,7 @@
 	  "Questions" : ["To what extent is your life (or work) balanced?","How can you achieve greater objectivity?","What course of action would be fair to everyone concerned?"]
     },
     {
+        "id": "10",
       "name": "The Hermit",
       "number": "9",
       "arcana": "Major Arcana",
@@ -415,6 +425,7 @@
 	  "Questions" : ["What would happen if I simply withdrew and took no action?","How can I get some perspective on the situation?","Who has walked this path before me? How can I enlist his or her help?"]
     },
     {
+        "id": "11",
       "name": "Wheel of Fortune",
       "number": "10",
       "arcana": "Major Arcana",
@@ -456,6 +467,7 @@
 	  "Questions" : ["How does this challenge fit into a larger pattern?","What role does luck play in my circumstances?","What can I control? How should I know when to relinquish control?"]
     },
     {
+        "id": "12",
       "name": "Justice",
       "number": "11",
       "arcana": "Major Arcana",
@@ -497,6 +509,7 @@
 	  "Questions" : ["How can I enhance my self-discipline?","What behaviors tempt me? How can I resist?","What instincts do I continue to struggle with today?"]
     },
     {
+        "id": "13",
       "name": "The Hanged Man",
       "number": "12",
       "arcana": "Major Arcana",
@@ -538,6 +551,7 @@
 	  "Questions" : ["How can I radically alter my perspective?","How might being stuck actually be a blessing in disguise?","How can I help myself see the glass as half full?"]
     },
     {
+        "id": "14",
       "name": "Death",
       "number": "13",
       "arcana": "Major Arcana",
@@ -579,6 +593,7 @@
 	  "Questions" : ["What needs to end?","How might an ending actually be a blessing in this situation?","What's next?"]
     },
     {
+        "id": "15",
       "name": "Temperance",
       "number": "14",
       "arcana": "Major Arcana",
@@ -622,6 +637,7 @@
 	  "Questions" : ["How can I avoid extremes?","What does everyone involved have in common?","How might combining familiar things help me create something new?"]
     },
     {
+        "id": "16",
       "name": "The Devil",
       "number": "15",
       "arcana": "Major Arcana",
@@ -664,6 +680,7 @@
 	  "Questions" : ["What enslaves me? How can I set myself free?","How can I re-evaluate the importance I assign to material things?","To what extent do my cravings define me?"]
     },
     {
+        "id": "17",
       "name": "The Tower",
       "number": "16",
       "arcana": "Major Arcana",
@@ -707,6 +724,7 @@
 	  "Questions" : ["How might the current situation dramatically alter my perspective?","How might this loss open the door for new growth?","What attitudes need to be struck down before I proceed?"]
     },
     {
+        "id": "18",
       "name": "The Star",
       "number": "17",
       "arcana": "Major Arcana",
@@ -751,6 +769,7 @@
 	  "Questions" : ["What would my higher power direct me to do?","How can I be less self-conscious and guarded?","How can I better attune myself to the abundance of life's blessings?"]
     },
     {
+        "id": "19",
       "name": "The Moon",
       "number": "18",
       "arcana": "Major Arcana",
@@ -792,6 +811,7 @@
 	  "Questions" : ["How can I face my fears and move forward?","What helpers can serve me as guides through my personal darkness?","How can I deal with the unknown in healthy ways?"]
     },
     {
+        "id": "20",
       "name": "The Sun",
       "number": "19",
       "arcana": "Major Arcana",
@@ -832,6 +852,7 @@
 	  "Questions" : ["How can I take best advantage of the attention coming my way?","What are my highest spiritual goals?","How can I avoid being bedazzled by the energy swirling around me?"]
     },
     {
+        "id": "21",
       "name": "Judgement",
       "number": "20",
       "arcana": "Major Arcana",
@@ -874,6 +895,7 @@
 	  "Questions" : ["What is the main thing I need to realize about myself?","In what way might the universe be trying to get my attention?","If I were to reinvent myself, what would I become?"]
     },
     {
+        "id": "22",
       "name": "The World",
       "number": "21",
       "arcana": "Major Arcana",
@@ -915,6 +937,7 @@
 	  "Questions" : ["For me, what would having it all mean?","How aware am I of my own connectedness to the world around me?","What keeps me from having it all right now, today?"]
     },
     {
+        "id": "23",
       "name": "Ace of Cups",
       "number": "1",
       "arcana": "Minor Arcana",
@@ -955,6 +978,7 @@
 	  "Questions" : ["What am I feeling right now?","How would I go about opening myself to spiritual guidance?","What motivates me the most - pleasure or pain? Why?"]
     },
     {
+        "id": "24",
       "name": "Two of Cups",
       "number": "2",
       "arcana": "Minor Arcana",
@@ -996,6 +1020,7 @@
 	   "Questions" : ["How can I make sure that what I'm feeling is mutual?\",\"When was the last time I felt \"in love\" with someone or something?","What do you need in order to feel emotionally stable?"]
     },
     {
+        "id": "25",
       "name": "Three of Cups",
       "number": "3",
       "arcana": "Minor Arcana",
@@ -1032,6 +1057,7 @@
 	  "Questions" : ["What's worth celebrating in my life?","How can I demonstrate my feelings in appropriate ways?","What can I do to show my partner how I really feel?"]
     },
     {
+        "id": "26",
       "name": "Four of Cups",
       "number": "4",
       "arcana": "Minor Arcana",
@@ -1071,6 +1097,7 @@
 	  "Questions" : ["How can I use this \"downtime\" to my best advantage?","How can I show my partner that I don't take him or her for granted?","To what extent is my mood blinding me to new opportunities?"]
     },
     {
+        "id": "27",
       "name": "Five of Cups",
       "number": "5",
       "arcana": "Minor Arcana",
@@ -1114,6 +1141,7 @@
 	  "Questions" : ["How do I tend to deal with loss?","What life lesson might I be learning now?","How can I shift my attention from the past to the future?"]
     },
     {
+        "id": "28",
       "name": "Six of Cups",
       "number": "6",
       "arcana": "Minor Arcana",
@@ -1153,6 +1181,7 @@
 	   "Questions" : ["What gifts do I possess? How freely do I give them?","How can I practice unconditional giving?","How would things change if I became a more charitable person?"]
     },
     {
+        "id": "29",
       "name": "Seven of Cups",
       "number": "7",
       "arcana": "Minor Arcana",
@@ -1190,6 +1219,7 @@
 	  "Questions" : ["What do you want most? What do you fear most? How are these related?","How is your imagination working for you? Against you?","How might a clearer personal vision help you choose a single cup from the many available?"]
     },
     {
+        "id": "30",
       "name": "Eight of Cups",
       "number": "8",
       "arcana": "Minor Arcana",
@@ -1233,6 +1263,7 @@
 	  "Questions" : ["What do I need to leave behind once and for all?","If I left in search of \"more,\" what would I be looking for, exactly?","How might a retreat enhance my perspective?"]
     },
     {
+        "id": "31",
       "name": "Nine of Cups",
       "number": "9",
       "arcana": "Minor Arcana",
@@ -1272,6 +1303,7 @@
 	   "Questions" : ["What is true happiness?","If I could have anything, what would I have?","What is my attitude toward luxury? Do I deserve it?"]
     },
     {
+        "id": "32",
       "name": "Ten of Cups",
       "number": "10",
       "arcana": "Minor Arcana",
@@ -1308,6 +1340,7 @@
 	  "Questions" : ["Who gets to define what \"joy\" consists of?","What course of action is available when you feel overwhelmed?","How might vows or promises play a role in achieving a greater level of joy in your life?"]
     },
     {
+        "id": "33",
       "name": "Page of Cups",
       "number": "11",
       "arcana": "Minor Arcana",
@@ -1346,6 +1379,7 @@
 	  "Questions" : ["How worried are you that others will see you as foolish or inexperienced?","To what extent can you be honest about your lack of experience in love and faith?","How can you maintain enthusiasm over time?"]
     },
     {
+        "id": "34",
       "name": "Knight of Cups",
       "number": "12",
       "arcana": "Minor Arcana",
@@ -1382,6 +1416,7 @@
 	   "Questions" : ["How prone to emotional extremes are you?","What's the difference in driving passion and blind zeal?","How can you inspire others without inciting a riot?"]
     },
     {
+        "id": "35",
       "name": "Queen of Cups",
       "number": "13",
       "arcana": "Minor Arcana",
@@ -1418,6 +1453,7 @@
 	  "Questions" : ["How do I handle strong emotions?","To what extent am I a victim of my own feelings?","How can I move from reflection to action?"]
     },
     {
+        "id": "36",
       "name": "King of Cups",
       "number": "14",
       "arcana": "Minor Arcana",
@@ -1453,6 +1489,7 @@
 	  "Questions" : ["What wise person could be consulted for good advice?","How can I make sure I'm being as objective and fair as possible?","To what extent am I capable of keeping a \"stiff upper lip?\""]
     },
     {
+        "id": "37",
       "name": "Ace of Swords",
       "number": "1",
       "arcana": "Minor Arcana",
@@ -1493,6 +1530,7 @@
 	  "Questions" : ["If I made my decision purely based on reason and logic, what would my decision be?","What do I think about my own problem-solving ability?","Who can supply me with the pure and simple facts?"]
     },
     {
+        "id": "38",
       "name": "Two of Swords",
       "number": "2",
       "arcana": "Minor Arcana",
@@ -1531,6 +1569,7 @@
 	  "Questions" : ["What information do I need to get past this impasse?","How can I get past being defensive and see the facts?","What viewpoints, other than my own, play a role in this situation?"]
     },
     {
+        "id": "39",
       "name": "Three of Swords",
       "number": "3",
       "arcana": "Minor Arcana",
@@ -1569,6 +1608,7 @@
 	   "Questions" : ["How can I get past my depression?","To what extent are my emotions a matter of choice?","How can I learn from the mistakes of the past?"]
     },
     {
+        "id": "40",
       "name": "Four of Swords",
       "number": "4",
       "arcana": "Minor Arcana",
@@ -1605,6 +1645,7 @@
 	  "Questions" : ["How long has it been since you deliberately took a \"time out?\"","How difficult is it for you to meditate?","What would happen if you simply refused to make a decision today?"]
     },
     {
+        "id": "41",
       "name": "Five of Swords",
       "number": "5",
       "arcana": "Minor Arcana",
@@ -1646,6 +1687,7 @@
 	  "Questions" : ["How do I behave when I win? What does that say about me?","How can I do what's necessary without making others feel defeated?","What's the difference between selfish action and acting in my own best interest?"]
     },
     {
+        "id": "42",
       "name": "Six of Swords",
       "number": "6",
       "arcana": "Minor Arcana",
@@ -1685,6 +1727,7 @@
 	   "Questions" : ["What assumptions govern my thinking?","How willing am I to lend aid to others? To request it when I need it?","How prepared am I to deal with change? With unexpected outcomes?"]
     },
     {
+        "id": "43",
       "name": "Seven of Swords",
       "number": "7",
       "arcana": "Minor Arcana",
@@ -1722,6 +1765,7 @@
 	  "Questions" : ["What assumptions am I making?","How well-defined is my sense of ethics?","How should I respond when I know others are breaking the rules?"]
     },
     {
+        "id": "44",
       "name": "Eight of Swords",
       "number": "8",
       "arcana": "Minor Arcana",
@@ -1764,6 +1808,7 @@
 	  "Questions" : ["Who's empowered to cut through the red tape?","What, exactly, are the obstacles? What resources, exactly, are needed to move them?","To what extent is your powerlessness a matter of attitude?"]
     },
     {
+        "id": "45",
       "name": "Nine of Swords",
       "number": "9",
       "arcana": "Minor Arcana",
@@ -1804,6 +1849,7 @@
 	   "Questions" : ["What role does worry play in your current situation?","To what other ends might you devote the energy you're giving to anxiety?","How can you know when it's time to stop thinking and start acting?"]
     },
     {
+        "id": "46",
       "name": "Ten of Swords",
       "number": "10",
       "arcana": "Minor Arcana",
@@ -1845,6 +1891,7 @@
 	  "Questions" : ["What are the signs that the time for debate is over?","How can you tell when interest has given way to obsession?","When your own limits are reached, where can you turn for aid?"]
     },
     {
+        "id": "47",
       "name": "Page of Swords",
       "number": "11",
       "arcana": "Minor Arcana",
@@ -1883,6 +1930,7 @@
 	   "Questions" : ["How comfortable are you with revealing your own ignorance?","What are the marks of a good student?","To what extent are you open to new information?"]
     },
     {
+        "id": "48",
       "name": "Knight of Swords",
       "number": "12",
       "arcana": "Minor Arcana",
@@ -1926,6 +1974,7 @@
 	  "Questions" : ["What do I really need to know?","To what extent have I investigated the facts behind my situation?","How can I share what I know without alienating others?"]
     },
     {
+        "id": "49",
       "name": "Queen of Swords",
       "number": "13",
       "arcana": "Minor Arcana",
@@ -1968,6 +2017,7 @@
 	  "Questions" : ["What do I have a knack for? How might my special gift prove useful now?","To what extent am I capable of saying what needs to be said?","What is the best possible way to say what I want to say?"]
     },
     {
+        "id": "50",
       "name": "King of Swords",
       "number": "14",
       "arcana": "Minor Arcana",
@@ -2006,6 +2056,7 @@
 	  "Questions" : ["What would your decision be if you had to render a binding verdict right now?","How comfortable are you saying exactly what you mean? How often do you temper what you have to say for fear of offending others?","If you were to ask others, \"What's my area of expertise?\" what would they say?"]
     },
     {
+        "id": "51",
       "name": "Ace of Wands",
       "number": "1",
       "arcana": "Minor Arcana",
@@ -2048,6 +2099,7 @@
 	  "Questions" : ["What do I really want, more than anything else?","What happens if I let this opportunity pass me by?","How clearly have I defined my directions, values, and goals?"]
     },
     {
+        "id": "52",
       "name": "Two of Wands",
       "number": "2",
       "arcana": "Minor Arcana",
@@ -2086,6 +2138,7 @@
 	  "Questions" : ["In a conflict, how do you decide who wins?","What values govern your decision-making process?","What choice will you make if you make no choice at all?"]
     },
     {
+        "id": "53",
       "name": "Three of Wands",
       "number": "3",
       "arcana": "Minor Arcana",
@@ -2124,6 +2177,7 @@
 	  "Questions" : ["How can you make a habit of breaking your habits?","How can you be a decisive leader in this circumstance?","What's your action plan for the next week, month, year, or decade?"]
     },
     {
+        "id": "54",
       "name": "Four of Wands",
       "number": "4",
       "arcana": "Minor Arcana",
@@ -2162,6 +2216,7 @@
 	  "Questions" : ["To what extent am I doing my part?","What kind of recognition would be most meaningful?","How might a celebration now impact community morale?"]
     },
     {
+        "id": "55",
       "name": "Five of Wands",
       "number": "5",
       "arcana": "Minor Arcana",
@@ -2199,6 +2254,7 @@
 	  "Questions" : ["To what extent is your current issue worth fighting for?","What alternatives are there to outright conflict?","What happens in a \"fair fight?\" How can you keep this fight fair?"]
     },
     {
+        "id": "56",
       "name": "Six of Wands",
       "number": "6",
       "arcana": "Minor Arcana",
@@ -2240,6 +2296,7 @@
 	   "Questions" : ["What kind of recognition do I crave? Why?","How freely do I praise the achievements of others?","What happens when the parade is over?"]
     },
     {
+        "id": "57",
       "name": "Seven of Wands",
       "number": "7",
       "arcana": "Minor Arcana",
@@ -2277,6 +2334,7 @@
 	  "Questions" : ["When do you feel most threatened? When do you get defensive?","How capable are you of defending yourself?","What kinds of beliefs are worth defending?"]
     },
     {
+        "id": "58",
       "name": "Eight of Wands",
       "number": "8",
       "arcana": "Minor Arcana",
@@ -2317,6 +2375,7 @@
 	  "Questions" : ["How quickly to you adapt to change?","What would your response be to overwhelming, sudden change?","What changes are on your horizon? How well have you prepared for them?"]
     },
     {
+        "id": "59",
       "name": "Nine of Wands",
       "number": "9",
       "arcana": "Minor Arcana",
@@ -2359,6 +2418,7 @@
 	  "Questions" : ["How do you cope when things get really tough?","When you get low, what encourages you to go on?","At what point should you be able to let this situation go?"]
     },
     {
+        "id": "60",
       "name": "Ten of Wands",
       "number": "10",
       "arcana": "Minor Arcana",
@@ -2396,6 +2456,7 @@
 	  "Questions" : ["How will you know when you reach the end of your rope?","How easily do you say no to new projects and requests?","What projects could you delegate...or eliminate?"]
     },
     {
+        "id": "61",
       "name": "Page of Wands",
       "number": "11",
       "arcana": "Minor Arcana",
@@ -2432,6 +2493,7 @@
 	  "Questions" : ["How easily do you admit your own inexperience?","How can you be a better student or employee?","What qualities would make a total beginner's voyage of discovery easier?"]
     },
     {
+        "id": "62",
       "name": "Knight of Wands",
       "number": "12",
       "arcana": "Minor Arcana",
@@ -2470,6 +2532,7 @@
 	  "Questions" : ["To what extent have you defined your ultimate goal?","What's the fastest way to get the job done? Is this necessarily the best way?","How long has it been since you looked back to see if others really are following your lead?"]
     },
     {
+        "id": "63",
       "name": "Queen of Wands",
       "number": "13",
       "arcana": "Minor Arcana",
@@ -2504,6 +2567,7 @@
 	  "Questions" : ["How attentive am I?","How can I draw people's attention to what we have in common?","To what extent am I able to convince people to do what I want them to do?"]
     },
     {
+        "id": "64",
       "name": "King of Wands",
       "number": "14",
       "arcana": "Minor Arcana",
@@ -2538,6 +2602,7 @@
 	  "Questions" : ["How confident a leader am I?","How can I project more confidence?","How can I offer my expertise in ways that inspire others to follow me?"]
     },
     {
+        "id": "65",
       "name": "Ace of Pentacles",
       "number": "1",
       "arcana": "Minor Arcana",
@@ -2576,6 +2641,7 @@
 	  "Questions" : ["If I made my decision based solely on practical concerns, what would my decision be?","What resources are available to me?","What will be the physical and financial impact of my decisions?"]
     },
     {
+        "id": "66",
       "name": "Two of Pentacles",
       "number": "2",
       "arcana": "Minor Arcana",
@@ -2615,6 +2681,7 @@
 	  "Questions" : ["What values govern my decisions?","How willing am I to sacrifice a little pleasure now in order to have more pleasure later on?","Given my current situation, which course of action will give me more of what I really need?"]
     },
     {
+        "id": "67",
       "name": "Three of Pentacles",
       "number": "3",
       "arcana": "Minor Arcana",
@@ -2655,6 +2722,7 @@
 	  "Questions" : ["How can I get more done?","What's expected of me? How large a role do I play in controlling those expectations?","What's been agreed to? How well has that agreement been followed?"]
     },
     {
+        "id": "68",
       "name": "Four of Pentacles",
       "number": "4",
       "arcana": "Minor Arcana",
@@ -2694,6 +2762,7 @@
 	  "Questions" : ["What factors determine how conservative or generous you are?","What kinds of things must be preserved at all costs?","When is greediness or stinginess a good trait to have? When might generosity work against you?"]
     },
     {
+        "id": "69",
       "name": "Five of Pentacles",
       "number": "5",
       "arcana": "Minor Arcana",
@@ -2734,6 +2803,7 @@
 	  "Questions" : ["What critical resources do I lack?","What people or groups would come to my aid if I asked?","How might an impoverished spirit be impacting my physical or financial condition?"]
     },
     {
+        "id": "70",
       "name": "Six of Pentacles",
       "number": "6",
       "arcana": "Minor Arcana",
@@ -2774,6 +2844,7 @@
 	  "Questions" : ["How do I feel about charity? About giving it? About receiving it?","How can I know if I'm treating others fairly?","What could I give that no one else can?"]
     },
     {
+        "id": "71",
       "name": "Seven of Pentacles",
       "number": "7",
       "arcana": "Minor Arcana",
@@ -2813,6 +2884,7 @@
 	  "Questions" : ["To what extent have I fulfilled my own expectations?","What are the terms of success?","How can I be happier with the progress I've made?"]
     },
     {
+        "id": "72",
       "name": "Eight of Pentacles",
       "number": "8",
       "arcana": "Minor Arcana",
@@ -2854,6 +2926,7 @@
 	   "Questions" : ["How long has it been since you were \"lost in your work?\"","How can you improve your level of dedication and focus?","What work do you do best? What about that work appeals to you?"]
     },
     {
+        "id": "73",
       "name": "Nine of Pentacles",
       "number": "9",
       "arcana": "Minor Arcana",
@@ -2891,6 +2964,7 @@
 	  "Questions" : ["If you could not have what you want, how would you make do?","Could you make a complex task easier by breaking it down into smaller steps?","How patient are you during the learning process? With yourself? With others?"]
     },
     {
+        "id": "74",
       "name": "Ten of Pentacles",
       "number": "10",
       "arcana": "Minor Arcana",
@@ -2929,6 +3003,7 @@
 	  "Questions" : ["How much stuff do I really need?","How do I feel about wealth and abundance? How do I define these terms?","How might shedding some possessions open room for growth?"]
     },
     {
+        "id": "75",
       "name": "Page of Pentacles",
       "number": "11",
       "arcana": "Minor Arcana",
@@ -2967,6 +3042,7 @@
 	  "Questions" : ["How can you get more financial or sexual experience without risking your livelihood or health?","How might hands-on learning play a role in your situation?","What's the most practical choice you could make?"]
     },
     {
+        "id": "76",
       "name": "Knight of Pentacles",
       "number": "12",
       "arcana": "Minor Arcana",
@@ -3008,6 +3084,7 @@
 	  "Questions" : ["What's the difference between caution and fear?","How can I evaluate the practicality of my own ideas and methods?","How realistic are my goals?"]
     },
     {
+        "id": "77",
       "name": "Queen of Pentacles",
       "number": "13",
       "arcana": "Minor Arcana",
@@ -3045,6 +3122,7 @@
 	  "Questions" : ["How do I define luxury?","To what extent am I capable of reveling in sensual pleasure?","What would I have to give up in order to \"have it all?\""]
     },
     {
+        "id": "78",
       "name": "King of Pentacles",
       "number": "14",
       "arcana": "Minor Arcana",
