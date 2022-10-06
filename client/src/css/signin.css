@@ -1,0 +1,11 @@
+.card-style{
+    margin-top: -100px;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(30px),
+}
+
+.links {
+    font-family: 'Magic';
+    color: black !important;
+    font-size: 50px !important
+}

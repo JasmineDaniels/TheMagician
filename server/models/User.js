@@ -24,6 +24,10 @@ const userSchema = new Schema(
             //match: [/^([a-z0-9A-Z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,6})?$/, 'Please fill in a valid email address']
             
         },
+        password: {
+            type: String,
+            required: true
+        },
         results: [],
         posts: [
             {

@@ -11,21 +11,23 @@ function Nav ({ currentPage, handlePageChange }){
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                         <li className="nav-item mx-3">
-                            <a className={currentPage === 'HOME' ? "nav-link active" : "nav-link"} 
+                            <a className={currentPage === 'HOME' ? "nav-link active links" : "nav-link links"} 
                             aria-current="page" 
                             href="#HOME"
                             onClick={() => handlePageChange('HOME')}>HOME</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className={currentPage === 'PLAY' ? "nav-link active" : "nav-link"} 
+                            <a className={currentPage === 'PLAY' ? "nav-link active links" : "nav-link links"} 
                             href="#PLAY"
                             onClick={() => handlePageChange('PLAY')}>PLAY</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className="nav-link mx-3" href="#PORTAL">PORTAL</a>
+                            <a className={currentPage === 'PORTAL' ? "nav-link active links" : "nav-link links"} href="#PORTAL">PORTAL</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className="nav-link mx-3" href="#SIGNIN">SIGN IN</a>
+                            <a className={currentPage === 'SIGNIN' ? "nav-link active links" : "nav-link links"} 
+                            href="#SIGNIN"
+                            onClick={() => handlePageChange('SIGNIN')}>SIGN IN</a>
                         </li>
                     
                     </ul>

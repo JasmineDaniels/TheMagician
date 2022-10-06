@@ -3,7 +3,7 @@
     src: url(../fonts/Piedra-Regular.ttf) format('truetype');
 }
 
-a {
+.links {
     font-family: 'Magic';
     color: black !important;
     font-size: 50px !important
