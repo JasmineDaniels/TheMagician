@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import '../css/card.css'
 import m01 from '../images/m01.jpg'
 
-export default function Card (props) {
+export default function Card ({cards}) {
     
-    const { cards } = props;
+    // const { cards } = props;
     console.log(cards)
     // const [ card ] = cards;
     

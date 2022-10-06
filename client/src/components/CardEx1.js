@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 //import c04 from '../images/c04.jpg'
 import m01 from '../images/m01.jpg'
+//import axios from 'axios'
 
 
 export default function Card ({ cards }){
@@ -92,21 +93,20 @@ export default function Card ({ cards }){
     const handleFlip = (e) => {
         console.log(e)
         const { target } = e;
-        const id = target.id;
-        console.log(`Card ${id} was clicked`)
-        if (id){
+        const card_id = target.id;
+        console.log(`Card ${card_id} was clicked`)
+        if (card_id){
             const newObj = {...flip}
-            newObj[id] = true
+            newObj[card_id] = true
             setFlip(newObj);
         }
         
         //axios get card = card.id
+        //const getCard = axios.get(`api/cards/${card_id}`)
         //axios post card back + info to results  
     }
 
-    // function handleFlip () {
-    //     setFlip(!flip)
-    // }
+    
     return (
         <Container>
             <Row >

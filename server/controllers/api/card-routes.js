@@ -23,6 +23,17 @@ router.get('/:_id', async (req, res) => {
     }
 })
 
+//Post card to results
+router.post('/:_id', async (req, res) => {
+    try {
+        //Drop Deck collection..
+        const oneCard = await Card.findById({_id: req.params._id})
+        // const updateUser
+        res.json(oneCard)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 
 
 

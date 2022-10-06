@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Home from "./Home";
 import Play from "./Play";
 import SignIn from "./SignIn";
+import Portal from "./Portal";
 
 export default function UIContainer (){
     const [currentPage, setCurrentPage] = useState('HOME')
@@ -17,6 +18,9 @@ export default function UIContainer (){
         }
         if (currentPage === 'SIGNIN'){
             return <SignIn/>
+        }
+        if (currentPage === 'PORTAL'){
+            return <Portal/>
         }
     }
 

@@ -7,17 +7,18 @@ function Result ({ cards }) {
             <div className="row">
                 {cards.map((card, index) => (
                     <div className='col-md-4'>
-                        <div className="card" key={index}>
+                        <div className="result-card" key={index}>
                             <div className="card-header">
-                                <h4>{card.name}</h4>
+                                <h4>{card.name} - {card.number}</h4>
                             </div>
                             <div className="card-body">
                                 <div className='img-adjust'>
                                     <img id={card.id} src={require(`../images/${card.img}`)} alt='card-back' className='card-fit'></img>
                                 </div>
-                                <div>
-                                    <p>{card.number}</p>
-                                    <p>{card.fortune_telling[0]}</p>
+                                <div className='my-2'>
+                                    <p>{card.arcana}</p>
+                                    <p>{card.fortune_telling[0]}, {card.fortune_telling[1]}, {card.fortune_telling[2]}</p>
+                                    
                                     <p>{card.Affirmation}</p>
                                 </div>
                                 

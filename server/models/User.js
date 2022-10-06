@@ -1,5 +1,5 @@
 const { model, Schema } = require("mongoose");
-const Card = require('./Card')
+//const Card = require('./Card')
 
 function validateEmail(email){
     const re = /^([a-z0-9A-Z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,6})?$/
@@ -28,7 +28,12 @@ const userSchema = new Schema(
             type: String,
             required: true
         },
-        results: [],
+        results: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'card',
+            },
+        ],
         posts: [
             {
                 type: Schema.Types.ObjectId,

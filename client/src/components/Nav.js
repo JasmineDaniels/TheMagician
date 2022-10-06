@@ -22,7 +22,9 @@ function Nav ({ currentPage, handlePageChange }){
                             onClick={() => handlePageChange('PLAY')}>PLAY</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className={currentPage === 'PORTAL' ? "nav-link active links" : "nav-link links"} href="#PORTAL">PORTAL</a>
+                            <a className={currentPage === 'PORTAL' ? "nav-link active links" : "nav-link links"} 
+                            href="#PORTAL"
+                            onClick={() => handlePageChange('PORTAL')}>PORTAL</a>
                         </li>
                         <li className="nav-item mx-3">
                             <a className={currentPage === 'SIGNIN' ? "nav-link active links" : "nav-link links"} 
