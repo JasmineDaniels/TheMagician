@@ -1,6 +1,11 @@
 import '../css/nav.css'
+import React, { useState } from 'react'
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import { Nav, Modal, Tab } from 'react-bootstrap';
+function Navigation ({ currentPage, handlePageChange }){
+    const [showModal, setShowModal] = useState(false);
 
-function Nav ({ currentPage, handlePageChange }){
     return(
         <div className="container my-3">
             <nav className="navbar navbar-expand-lg navbar-dark  ">
@@ -27,10 +32,41 @@ function Nav ({ currentPage, handlePageChange }){
                             onClick={() => handlePageChange('PORTAL')}>PORTAL</a>
                         </li>
                         <li className="nav-item mx-3">
-                            <a className={currentPage === 'SIGNIN' ? "nav-link active links" : "nav-link links"} 
+                            <a className="nav-link links"
                             href="#SIGNIN"
-                            onClick={() => handlePageChange('SIGNIN')}>SIGN IN</a>
+                            onClick={() => setShowModal(true)}>SIGN IN</a>
                         </li>
+                        <Modal
+                            size='lg'
+                            show={showModal}
+                            onHide={() => setShowModal(false)}
+                            aria-labelledby='signup-modal'>
+                            {/* tab container to do either signup or login component */}
+                            <Tab.Container defaultActiveKey='login'>
+                            <Modal.Header closeButton>
+                                <Modal.Title id='signup-modal'>
+                                <Nav variant='pills'>
+                                    <Nav.Item>
+                                    <Nav.Link eventKey='login'>Login</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                    <Nav.Link eventKey='signup'>Sign Up</Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Tab.Content>
+                                <Tab.Pane eventKey='login'>
+                                    <SignIn handleModalClose={() => setShowModal(false)} />
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='signup'>
+                                    <SignUp handleModalClose={() => setShowModal(false)} />
+                                </Tab.Pane>
+                                </Tab.Content>
+                            </Modal.Body>
+                            </Tab.Container>
+                    </Modal>
                     
                     </ul>
                 </div>
@@ -41,4 +77,26 @@ function Nav ({ currentPage, handlePageChange }){
     )
 }
 
-export default Nav;
+export default Navigation;
+
+// eslint-disable-next-line
+{/* <div className='modal' id='signup-modal'>
+    <div className='modal-dialog'>
+        <nav>
+            <ul className='nav nav-tabs'>
+                <li className='nav-item'>
+                    <a href='#sign-in'>Login</a>
+                </li>
+                <li className='nav-item'>
+                    <a href='#sign-up'>Sign Up</a>
+                </li>
+            </ul>
+        </nav>
+        <div className='modal-content'>
+            <div className='modal-header'>
+                <h5></h5>
+            </div>
+
+        </div>
+    </div>
+</div> */}

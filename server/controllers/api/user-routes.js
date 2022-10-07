@@ -15,6 +15,15 @@ router.post('/signup', async (req, res) => {
 
 })
 
+router.post('/login', async (req, res) => {
+    console.log(req.body)
+    const findUser = await User.findOne({ $or: [{username: req.body.username}, {email: req.body.email}]})
+    if (!findUser){
+        res.status(400).json({ message: `No user with this email: ${req.body.email}`})
+    }
+    //correct pw
+})
+
 //Create users results
 router.post('/:myId/results/:name', async (req, res) => {
     try {

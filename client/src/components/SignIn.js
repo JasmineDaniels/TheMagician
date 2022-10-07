@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { validateEmail, checkPassword } from '../utils/helpers.js'
 import '../css/signin.css'
+import { loginUser } from '../utils/API.js';
 export default function SignIn (){
-    //Register
-    const [username, setUsername] = useState('');
+    // const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [errMessage, setErrMessage] = useState('');
@@ -13,22 +13,22 @@ export default function SignIn (){
         const inputValue = target.value;
 
         //switch
-        if (inputType === 'username'){
-            setUsername(inputValue);
-        }
+        // if (inputType === 'username'){
+        //     setUsername(inputValue);
+        // }
         if (inputType === 'email') {
-            setPassword(inputValue);
+            setEmail(inputValue);
         } 
         if (inputType === 'password') {
-            setEmail(inputValue);
+            setPassword(inputValue);
         }   
     };
 
-    const handleRegisterSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            if (!username || !email || !password){
-                alert('Username, Email, & Password are required');
+            if ( !email || !password){
+                alert('Email, & Password are required');
                 return;
             }
     
@@ -38,16 +38,20 @@ export default function SignIn (){
                 return;
             } 
 
-            if (!checkPassword(password)) {
+            const checkPW = checkPassword(password)
+            if (!checkPW) {
                 alert(
-                  `Choose a more secure password for the account: ${username}`
+                  `Choose a more secure password for the account: ${email}`
                 );
                 return;
             }
             
-            //await axios post api/users
 
-            alert(`Hello ${username}`)
+            const res = await loginUser(email, password)
+            //await axios post api/users
+            alert(`Hello ${email}`)
+            setEmail('')
+            setPassword('')
             
         } catch (error) {
             console.log(error)
@@ -58,64 +62,42 @@ export default function SignIn (){
             <section className="container">
                 <div className='row'>
                     
-                    <form>
+                    <form className='col-md-6 mx-auto'>
                         
                         <div className="form-outline mb-4">
-                            <input type="email" id="form2Example1" className="form-control" />
+                            <input 
+                            type="email" 
+                            id="form2Example1"
+                            name='email' 
+                            defaultValue={email}
+                            onChange={handleInputChange}
+                            className="form-control" />
                             <label className="form-label" for="form2Example1">Email address</label>
                         </div>
 
                         
                         <div className="form-outline mb-4">
-                            <input type="password" id="form2Example2" className="form-control" />
+                            <input 
+                            type="password" 
+                            id="form2Example2"
+                            name='password' 
+                            defaultValue={password}
+                            onChange={handleInputChange}
+                            className="form-control" />
                             <label className="form-label" for="form2Example2">Password</label>
                         </div>
 
-                        
-                        <div className="row mb-4">
-                            <div className="col d-flex justify-content-center">
-                            
-                            <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" id="form2Example34" checked />
-                                <label className="form-check-label" for="form2Example34"> Remember me </label>
-                            </div>
-                            </div>
-
-                            <div className="col">
-                            
-                            <a href="#!">Forgot password?</a>
-                            </div>
-                        </div>
-
-                        
-                        <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
-
-                        
                         <div className="text-center">
                             <p>Not a member? <a href="#!">Register</a></p>
-                            <p>or sign up with:</p>
-                            <button type="button" className="btn btn-primary btn-floating mx-1">
-                            <i className="fab fa-facebook-f"></i>
-                            </button>
-
-                            <button type="button" className="btn btn-primary btn-floating mx-1">
-                            <i className="fab fa-google"></i>
-                            </button>
-
-                            <button type="button" className="btn btn-primary btn-floating mx-1">
-                            <i className="fab fa-twitter"></i>
-                            </button>
-
-                            <button type="button" className="btn btn-primary btn-floating mx-1">
-                            <i className="fab fa-github"></i>
-                            </button>
+                            <button 
+                            type="submit" 
+                            className="btn btn-primary btn-block mb-4"
+                            onClick={handleSubmit}>Sign in</button>
                         </div>
+                    
                     </form>
-                    
-
-                    
-                </div>
-                    
+                
+                </div>     
                 
             </section>
             

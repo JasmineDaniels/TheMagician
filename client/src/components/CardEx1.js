@@ -92,11 +92,12 @@ export default function Card ({ cards }){
         "78": false,
     })
 
-    const handleSubmit = (name) => {
+    const handleSubmit = async (cardOne, cardTwo, cardThree) => {
         console.log(`I was submitted..`)
-        axios.get(`api/cards/${name}`)
+        await axios.get(`api/cards/${cardOne}`)
+        await axios.get(`api/cards/${cardTwo}`)
+        await axios.get(`api/cards/${cardThree}`)
         //axios post card back + info to results  
-        setSubmit(true)
     }
 
     const handleFlip = (e) => {
@@ -117,9 +118,13 @@ export default function Card ({ cards }){
             }
         
         } else {
-            const { target } = e;
-            const name = target.name;
-            handleSubmit(name)
+            setSubmit(true)
+            console.log(selected)
+            const [ cardOne, cardTwo, cardThree ] = selected
+            console.log(cardOne)
+            console.log(cardTwo)
+            console.log(cardThree)
+            handleSubmit(cardOne, cardTwo, cardThree)
         }
         
     }
@@ -131,7 +136,7 @@ export default function Card ({ cards }){
         <Container>
 
             <div className="d-flex">
-                <button className={submit ? 'btn btn-success mx-auto' : 'btn btn-success mx-auto none'}
+                <button className={submit ? 'btn btn-success mx-auto' : 'none'}
                 onClick={handleSubmit}>Get Results</button>
             </div>
             <Row >

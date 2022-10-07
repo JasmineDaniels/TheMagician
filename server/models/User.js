@@ -21,7 +21,6 @@ const userSchema = new Schema(
             trim: true,
             unique: true,
             validate: [validateEmail, 'Please fill in a valid email address'],
-            //match: [/^([a-z0-9A-Z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,6})?$/, 'Please fill in a valid email address']
             
         },
         password: {
