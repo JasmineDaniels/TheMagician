@@ -5,10 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 //import c04 from '../images/c04.jpg'
 import m01 from '../images/m01.jpg'
-//import axios from 'axios'
+import axios from 'axios'
 
 
 export default function Card ({ cards }){
+    const [selected, setSelected] = useState([])
+    const [submit, setSubmit] = useState(false)
     const [flip, setFlip] = useState({
         "1": false,
         "2": false,
@@ -90,25 +92,48 @@ export default function Card ({ cards }){
         "78": false,
     })
 
+    const handleSubmit = (name) => {
+        console.log(`I was submitted..`)
+        axios.get(`api/cards/${name}`)
+        //axios post card back + info to results  
+        setSubmit(true)
+    }
+
     const handleFlip = (e) => {
-        console.log(e)
-        const { target } = e;
-        const card_id = target.id;
-        console.log(`Card ${card_id} was clicked`)
-        if (card_id){
-            const newObj = {...flip}
-            newObj[card_id] = true
-            setFlip(newObj);
+        if (selected.length !== 3){
+            console.log(e)
+            const { target } = e;
+            const id = target.id;
+            const name = target.name;
+            if (!selected.includes(name)){
+                setSelected([...selected, name])
+                console.log(`Card ${id} was clicked`)
+                console.log(`Card ${name} was clicked`)
+                if (id){
+                    const newObj = {...flip}
+                    newObj[id] = true
+                    setFlip(newObj);
+                }
+            }
+        
+        } else {
+            const { target } = e;
+            const name = target.name;
+            handleSubmit(name)
         }
         
-        //axios get card = card.id
-        //const getCard = axios.get(`api/cards/${card_id}`)
-        //axios post card back + info to results  
     }
+
+    
 
     
     return (
         <Container>
+
+            <div className="d-flex">
+                <button className={submit ? 'btn btn-success mx-auto' : 'btn btn-success mx-auto none'}
+                onClick={handleSubmit}>Get Results</button>
+            </div>
             <Row >
                 
                 {cards.flatMap((card, index) => (
@@ -117,10 +142,10 @@ export default function Card ({ cards }){
                         <div className='card'>
                             <div className={flip[`${card.id}`] ? "card__inner is-flipped" : 'card__inner'} >
                                 <div className='card__face card__face--front'>
-                                    <img id={card.id} src={m01} alt='card-front' className='card-fit' onClick={handleFlip}></img>
+                                    <img id={card.id} name={card.name} src={m01} alt='card-front' className='card-fit' onClick={handleFlip}></img>
                                 </div>
                                 <div className='card__face card__face--back'>
-                                    <h6>{card.name}</h6>
+                                    <h6 className='none'>{card.name}</h6>
                                     <img src={require(`../images/${card.img}`)} alt='card-back' className='card-fit'></img>
                                 </div>
 

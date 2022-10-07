@@ -15,11 +15,13 @@ router.post('/signup', async (req, res) => {
 
 })
 
-router.post('/:myId/results/:_id', async (req, res) => {
+//Create users results
+router.post('/:myId/results/:name', async (req, res) => {
     try {
         //Drop Deck collection..
-        const oneCard = await Card.findById({_id: req.params._id})
+        const oneCard = await Card.findOne({name: req.params.name})
         const updateUser = await User.findOneAndUpdate(
+            //{_id: req.params.myId},
             {_id: req.params.myId},
             {$addToSet: {results: oneCard}}, //req.params.card_id
             {runValidators: true, returnOriginal: false}

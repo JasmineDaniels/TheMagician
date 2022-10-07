@@ -13,22 +13,23 @@ router.get('/', async (req, res) => {
 })
 
 //Get one card
-router.get('/:_id', async (req, res) => {
-    try {
-        //Drop Deck collection..
-        const oneCard = await Card.findById({_id: req.params._id}) 
-        res.json(oneCard)
-    } catch (error) {
-        res.status(500).json(error)
-    }
-})
+// router.get('/:_id', async (req, res) => {
+//     try {
+//         //Drop Deck collection..
+//         const oneCard = await Card.findById({_id: req.params._id}) 
+//         res.json(oneCard)
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// })
 
-//Post card to results
-router.post('/:_id', async (req, res) => {
+//Get card by name - TESTER
+router.get('/:name', async (req, res) => {
     try {
+        const card = req.params.name
+        console.log(card)
         //Drop Deck collection..
-        const oneCard = await Card.findById({_id: req.params._id})
-        // const updateUser
+        const oneCard = await Card.findOne({name: req.params.name})
         res.json(oneCard)
     } catch (error) {
         res.status(500).json(error)

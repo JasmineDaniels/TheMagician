@@ -30,8 +30,17 @@ const userSchema = new Schema(
         },
         results: [
             {
-                type: Schema.Types.ObjectId,
-                ref: 'card',
+                name: String,
+                number: String,
+                arcana: String,
+                img: String,
+                fortune_telling: Array,
+                keywords: Array,
+                meanings: Object,
+                Numerolgy: String,
+                Astrology: String,
+                Affirmation: String,
+                Questions: Array,
             },
         ],
         posts: [

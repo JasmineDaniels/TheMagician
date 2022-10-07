@@ -9,6 +9,19 @@ import cards from '../utils/cards.json'
 
 export default function Play (){
 
+    // const shuffleCards = () => {
+    //     for (let i = cards.length - 1; i > 0; i--) {
+    //         const newIndex = Math.floor(Math.random() * (i + 1));
+    //         const oldValue = cards[newIndex]
+    //         cards[newIndex] = cards[i]
+    //         cards[i] = oldValue
+            
+    //     }
+    // }
+
+    // shuffleCards()
+    
+
     //const card = axios.get('http://localhost:3001/api/cards/')
     return (
         <div>
