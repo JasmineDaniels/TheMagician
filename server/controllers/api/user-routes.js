@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Card } = require("../../models");
-
+const { signToken } = require('../../utils/auth')
 
 router.get('/', async (req, res) => {
     try {
@@ -17,11 +17,18 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     console.log(req.body)
-    const findUser = await User.findOne({ $or: [{username: req.body.username}, {email: req.body.email}]})
-    if (!findUser){
+    const user = await User.findOne({ $or: [{username: req.body.username}, {email: req.body.email}]}).lean()
+    if (!user){
         res.status(400).json({ message: `No user with this email: ${req.body.email}`})
     }
     //correct pw
+    const validPassword = await user.checkPW(req.body.password)
+    if (!validPassword){
+        res.status(400).json({message: `Sorry Wrong password`})
+    }
+
+    const token = signToken(user);
+    res.json({ token, user });
 })
 
 //Create users results

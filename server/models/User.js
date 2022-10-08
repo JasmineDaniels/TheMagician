@@ -1,5 +1,6 @@
 const { model, Schema } = require("mongoose");
 //const Card = require('./Card')
+const bcrypt = require('bcrypt');
 
 function validateEmail(email){
     const re = /^([a-z0-9A-Z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,6})?$/
@@ -65,10 +66,20 @@ const userSchema = new Schema(
     },
 )
 
-// userSchema.virtual('friendCount')
-//     .get(function () {
-//         return this.friends.length;
-//     })
+userSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+  
+    next();
+});
+  
+  // custom method to compare and validate password for logging in
+userSchema.methods.checkPW = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
+
 
 const User = model('user', userSchema)
 

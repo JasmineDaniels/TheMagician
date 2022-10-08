@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { validateEmail, checkPassword } from '../utils/helpers.js'
 import '../css/signin.css'
 import { loginUser } from '../utils/API.js';
+import Auth from '../utils/auth';
+
 export default function SignIn (){
     // const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -48,13 +50,22 @@ export default function SignIn (){
             
 
             const res = await loginUser(email, password)
-            //await axios post api/users
-            alert(`Hello ${email}`)
+            if(!res.ok){
+                alert(`something went wrong`)
+                return;
+            }
+
+            const { token, user } = await res.json();
+            console.log(user)
+            Auth.login(token)
+            alert(`Hello ${user.username}`)
+
             setEmail('')
             setPassword('')
             
         } catch (error) {
             console.log(error)
+            alert(`Incorrect Email or Password`)
         }
     }
 

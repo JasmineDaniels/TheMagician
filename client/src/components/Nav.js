@@ -18,7 +18,7 @@ function Navigation ({ currentPage, handlePageChange }){
                         <li className="nav-item mx-3">
                             <a className={currentPage === 'HOME' ? "nav-link active links" : "nav-link links"} 
                             aria-current="page" 
-                            href="#HOME"
+                            href="/HOME"
                             onClick={() => handlePageChange('HOME')}>HOME</a>
                         </li>
                         <li className="nav-item mx-3">
