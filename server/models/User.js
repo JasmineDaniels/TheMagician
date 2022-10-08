@@ -75,10 +75,21 @@ userSchema.pre('save', async function (next) {
     next();
 });
   
-  // custom method to compare and validate password for logging in
+// custom method to compare and validate password for logging in
 userSchema.methods.checkPW = async function (password) {
-    return bcrypt.compare(password, this.password);
+    const user = this
+    return bcrypt.compareSync(password, user.password);
 };
+
+// userSchema.methods.comparePassword = function(password, callback) {
+//     bcrypt.compare(password, this.password, function(error, isMatch) {
+//       if (error) {
+//         return callback(error)
+//       } else {
+//         callback(null, isMatch)
+//       }
+//     })
+// }
 
 
 const User = model('user', userSchema)

@@ -22,19 +22,24 @@ router.post('/signup', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    console.log(req.body)
-    const user = await User.findOne({ $or: [{username: req.body.username}, {email: req.body.email}]}).lean()
-    if (!user){
-        res.status(400).json({ message: `No user with this email: ${req.body.email}`})
-    }
-    //correct pw
-    const validPassword = await user.checkPW(req.body.password)
-    if (!validPassword){
-        res.status(400).json({message: `Sorry Wrong password`})
-    }
+    try {
+        console.log(req.body)
+        const user = await User.findOne({ $or: [{username: req.body.username}, {email: req.body.email}]})
+        if (!user){
+            res.status(400).json({ message: `No user with this email: ${req.body.email}`})
+        }
+        //correct pw
+        const validPassword = await user.checkPW(req.body.password)
+        if (!validPassword){
+            res.status(400).json({message: `Sorry Wrong password`})
+            return
+        }
 
-    const token = signToken(user);
-    res.json({ token, user });
+        const token = signToken(user);
+        res.json({ token, user });
+    } catch (error) {
+        res.status(500).json({message: `Internal server error`})
+    }
 })
 
 //Create users results
