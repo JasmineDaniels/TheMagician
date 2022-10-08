@@ -12,7 +12,13 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/signup', async (req, res) => {
-
+    console.log(req.body);
+    const user = await User.create(req.body);
+    if (!user){
+        res.status(400).json({message: `Cannot create your account at this time`})
+    }
+    const token = signToken(user);
+    res.json({ token, user });
 })
 
 router.post('/login', async (req, res) => {
