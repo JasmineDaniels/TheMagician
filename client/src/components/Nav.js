@@ -2,6 +2,7 @@ import '../css/nav.css'
 import React, { useState } from 'react'
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import Auth from '../utils/auth'
 import { Nav, Modal, Tab } from 'react-bootstrap';
 function Navigation ({ currentPage, handlePageChange }){
     const [showModal, setShowModal] = useState(false);
@@ -18,7 +19,7 @@ function Navigation ({ currentPage, handlePageChange }){
                         <li className="nav-item mx-3">
                             <a className={currentPage === 'HOME' ? "nav-link active links" : "nav-link links"} 
                             aria-current="page" 
-                            href="/HOME"
+                            href="#HOME"
                             onClick={() => handlePageChange('HOME')}>HOME</a>
                         </li>
                         <li className="nav-item mx-3">
@@ -26,10 +27,16 @@ function Navigation ({ currentPage, handlePageChange }){
                             href="#PLAY"
                             onClick={() => handlePageChange('PLAY')}>PLAY</a>
                         </li>
+                        {/* if LoggedIn  */}
                         <li className="nav-item mx-3">
                             <a className={currentPage === 'PORTAL' ? "nav-link active links" : "nav-link links"} 
                             href="#PORTAL"
                             onClick={() => handlePageChange('PORTAL')}>PORTAL</a>
+                        </li>
+                        <li className="nav-item mx-3">
+                            <a className="nav-link links"
+                            href="#LOGOUT"
+                            onClick={Auth.logout}>LOGOUT</a>
                         </li>
                         <li className="nav-item mx-3">
                             <a className="nav-link links"
