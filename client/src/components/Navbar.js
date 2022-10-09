@@ -5,6 +5,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 //import Home from './Home';
 import Auth from '../utils/auth';
+import '../css/nav.css'
 const AppNavbar = () => {
     const [showModal, setShowModal] = useState(false);
 
@@ -18,22 +19,22 @@ const AppNavbar = () => {
                 <Navbar.Toggle aria-controls='navbar' />
                 <Navbar.Collapse id='navbar'>
                     <Nav className='mx-auto'>
-                        <Link to='/'>
-                            Home
+                        <Link className='links mx-4' to='/'>
+                            HOME
                         </Link>
-                        <Link to='/play'>
+                        <Link className='links mx-4' to='/play'>
                             PLAY
                         </Link>
                         {/* if user is logged in show saved books and logout */}
                         {Auth.loggedIn() ? (
                             <>
-                            <Link as={Link} to='/portal'>
+                            <Link className='links mx-4' as={Link} to='/portal'>
                                 PORTAL
                             </Link>
-                            <Link onClick={Auth.logout}>LOGOUT</Link>
+                            <Link className='links mx-4' onClick={Auth.logout}>LOGOUT</Link>
                             </>
                         ) : (
-                            <Link onClick={() => setShowModal(true)}>SIGN IN</Link>
+                            <Link className='links mx-4' onClick={() => setShowModal(true)}>SIGN IN</Link>
                         )}
                     </Nav>
                 </Navbar.Collapse>

@@ -1,7 +1,7 @@
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
-import CardEx1 from "./CardEx1"
+import Card from "./Card"
 import cards from '../utils/cards.json'
 //import Result from "./Result"
 //import Card from "./Card"
@@ -26,7 +26,7 @@ export default function Play (){
     return (
         <div>
             <h1 id="PLAY" className="text-center">PLAY</h1>
-            <CardEx1 cards={cards}/>
+            <Card cards={cards}/>
         </div>
         
         // <Container>
