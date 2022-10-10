@@ -1,11 +1,23 @@
 const router = require('express').Router();
 const { User, Card } = require("../../models");
-const { signToken } = require('../../utils/auth')
+const { signToken, authMiddleware } = require('../../utils/auth')
 
 router.get('/', async (req, res) => {
     try {
         const allUsers = await User.find({}).lean() 
         res.json(allUsers)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+router.get('/me', authMiddleware, async (req, res) => {
+    try {
+        console.log(req.user)
+        const getUser = await User.findOne({
+            $or: [{ _id: req.user._id }, { username: req.user.username }]
+        })
+        res.json(getUser)
     } catch (error) {
         res.status(500).json(error)
     }
@@ -42,14 +54,15 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//Create users results
-router.post('/:myId/results/:name', async (req, res) => {
+//Create users results = /portal endpoint      /:myId/results/:name
+router.post('/results/:name', authMiddleware, async (req, res) => {
     try {
-        //Drop Deck collection..
+        console.log(req.user)
+        const { user } = authMiddleware
         const oneCard = await Card.findOne({name: req.params.name})
         const updateUser = await User.findOneAndUpdate(
             //{_id: req.params.myId},
-            {_id: req.params.myId},
+            {_id: user._id},
             {$addToSet: {results: oneCard}}, //req.params.card_id
             {runValidators: true, returnOriginal: false}
         )
@@ -59,9 +72,7 @@ router.post('/:myId/results/:name', async (req, res) => {
     }
 })
 
-router.get('/results', async (req, res) => {
 
-})
 
 
 
