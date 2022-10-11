@@ -16,7 +16,10 @@ router.get('/me', authMiddleware, async (req, res) => {
         console.log(req.user)
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
-        })
+        }).lean()
+        if (!getUser){
+            res.status(404).json({message: `No user found with this id`})
+        }
         res.json(getUser)
     } catch (error) {
         res.status(500).json(error)
@@ -54,18 +57,33 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//Create users results = /portal endpoint      /:myId/results/:name
-router.post('/results/:name', authMiddleware, async (req, res) => {
+//Create users results       /:myId/results/:name
+router.post('/results', authMiddleware, async (req, res) => {
     try {
-        console.log(req.user)
-        const { user } = authMiddleware
-        const oneCard = await Card.findOne({name: req.params.name})
+        //console.log(req.user)
+        console.log(req.body.body)
+        const names = JSON.parse(req.body.body)
+        const cards = await Card.find({ 'name': { $in: names } }).lean();
+        // const cards = await Card.find(
+        //     {"name": { $in: [
+        //         req.body[0],
+        //         req.body[1],
+        //         req.body[2],
+        //     ]
+        // }})
+        
+        if(!cards){
+            res.status(404).json({message: `Could not find cards`})
+        }
         const updateUser = await User.findOneAndUpdate(
             //{_id: req.params.myId},
-            {_id: user._id},
-            {$addToSet: {results: oneCard}}, //req.params.card_id
+            {_id: req.user._id},
+            {$addToSet: {results: [cards]}}, //req.params.card_id
             {runValidators: true, returnOriginal: false}
         )
+        if (!updateUser){
+            res.status(404).json({message: `No user with this id.`})
+        }
         res.json(updateUser)
     } catch (error) {
         res.status(500).json(error)

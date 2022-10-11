@@ -1,4 +1,4 @@
-//import axios from "axios";
+import axios from "axios";
 
 export const getMe = (token) => {
     return fetch('/api/users/me', {
@@ -8,6 +8,22 @@ export const getMe = (token) => {
       },
     });
 };
+
+export const createResults = (token, data) => {
+  return axios.post('/api/users/results', {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data)
+  });
+};
+
+// body: JSON.stringify({
+//   cardOne,
+//   cardTwo,
+//   cardThree
+// })
   
 export const createUser = (userData) => {
     return fetch('/api/users/signup', {

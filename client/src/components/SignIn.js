@@ -57,6 +57,7 @@ export default function SignIn (){
 
             const { token, user } = await res.json();
             console.log(user)
+            console.log(token)
             Auth.login(token)
             alert(`Hello ${user.username}`)
 

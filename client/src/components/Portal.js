@@ -33,7 +33,7 @@ export default function Portal (){
         };
     
         getUserData();
-    }, [userDataLength]);
+    }); //, [userDataLength]
 
     if (!userDataLength) {
         return <h2>LOADING...</h2>;
@@ -48,6 +48,8 @@ export default function Portal (){
 
         <div>
             {userData.username}
+            {/* userData.results.map */}
+            {userData.results}
         </div>
 
         // <section className="container">

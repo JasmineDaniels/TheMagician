@@ -6,6 +6,7 @@ import AppNavbar from './components/Navbar';
 import Home from './components/Home';
 import Play from './components/Play';
 import Portal from './components/Portal';
+//import SignIn from './components/SignIn'
 
 export default function App (){
     return (
@@ -17,6 +18,7 @@ export default function App (){
           <Route path='/' element={<Home/>} />
           <Route path='/play' element={<Play/>} />
           <Route path='/portal' element={<Portal/>} />
+          {/* <Route path='/signin' element={<SignIn/>} /> */}
           <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
         </Routes>
       </>

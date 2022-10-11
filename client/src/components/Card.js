@@ -5,7 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 //import c04 from '../images/c04.jpg'
 import m01 from '../images/m01.jpg'
-import axios from 'axios'
+//import axios from 'axios'
+import { createResults } from '../utils/API';
 
 
 export default function Card ({ cards }){
@@ -92,12 +93,33 @@ export default function Card ({ cards }){
         "78": false,
     })
 
-    const handleSubmit = async (cardOne, cardTwo, cardThree) => {
-        console.log(`I was submitted..`)
-        await axios.get(`api/cards/${cardOne}`)
-        await axios.get(`api/cards/${cardTwo}`)
-        await axios.get(`api/cards/${cardThree}`)
-        //axios post card back + info to results  
+    const handleSubmit = async (selectedArr) => {
+        try {
+            console.log(`I am submitting...`)
+            // await axios.get(`api/cards/${cardOne}`)
+            // await axios.get(`api/cards/${cardTwo}`)
+            // await axios.get(`api/cards/${cardThree}`)
+            
+            const token = localStorage.getItem('id_token')
+            if (!token){
+                alert(`please sign in 1`)
+            }
+            const results = await createResults(token, selectedArr)
+            console.log(results)
+            if (!results.ok){
+                alert(`please sign in 2`)  
+            }
+            // await axios.post(`api/users/results/${cardOne}`)
+            // await axios.post(`api/users/results/${cardTwo}`)
+            // await axios.post(`api/users/results/${cardThree}`)
+
+            
+            // console.log(response)
+            window.location.replace('/portal')
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
     const handleFlip = (e) => {
@@ -120,17 +142,15 @@ export default function Card ({ cards }){
         } else {
             setSubmit(true)
             console.log(selected)
-            const [ cardOne, cardTwo, cardThree ] = selected
-            console.log(cardOne)
-            console.log(cardTwo)
-            console.log(cardThree)
-            handleSubmit(cardOne, cardTwo, cardThree)
+            // const [ cardOne, cardTwo, cardThree ] = selected
+            // console.log(cardOne)
+            // console.log(cardTwo)
+            // console.log(cardThree)
+            //handleSubmit(cardOne, cardTwo, cardThree)
+            handleSubmit(selected)
         }
         
     }
-
-    
-
     
     return (
         <Container>
@@ -164,9 +184,6 @@ export default function Card ({ cards }){
 
             </Row>
             
-            <div>
-                Results
-            </div>
         </Container>
     
     )
