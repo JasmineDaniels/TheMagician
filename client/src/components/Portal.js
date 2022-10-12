@@ -13,7 +13,7 @@ export default function Portal (){
     useEffect(() => {
         const getUserData = async () => {
           try {
-                const token = Auth.loggedIn() ? Auth.getToken() : null;
+                const token = Auth.getToken();
         
                 if (!token) {
                 return false;
@@ -33,9 +33,9 @@ export default function Portal (){
         };
     
         getUserData();
-    }); //, [userDataLength]
+    },[]); //, [userDataLength]
 
-    if (!userDataLength) {
+    if (!userData) {
         return <h2>LOADING...</h2>;
     }
 

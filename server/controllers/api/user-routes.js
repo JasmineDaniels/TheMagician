@@ -71,7 +71,6 @@ router.post('/results', authMiddleware, async (req, res) => {
         //         req.body[2],
         //     ]
         // }})
-        
         if(!cards){
             res.status(404).json({message: `Could not find cards`})
         }
@@ -84,7 +83,7 @@ router.post('/results', authMiddleware, async (req, res) => {
         if (!updateUser){
             res.status(404).json({message: `No user with this id.`})
         }
-        res.json(updateUser)
+        res.status(200).json({message: `successfully added cards to users result-set`})
     } catch (error) {
         res.status(500).json(error)
     }

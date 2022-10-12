@@ -107,14 +107,9 @@ export default function Card ({ cards }){
             const results = await createResults(token, selectedArr)
             console.log(results)
             if (!results.ok){
-                alert(`please sign in 2`)  
+                alert(`Results not found`)  
             }
-            // await axios.post(`api/users/results/${cardOne}`)
-            // await axios.post(`api/users/results/${cardTwo}`)
-            // await axios.post(`api/users/results/${cardThree}`)
 
-            
-            // console.log(response)
             window.location.replace('/portal')
         } catch (error) {
             console.log(error)

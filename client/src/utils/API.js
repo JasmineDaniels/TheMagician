@@ -1,11 +1,12 @@
 import axios from "axios";
 
 export const getMe = (token) => {
-    return fetch('/api/users/me', {
+    return axios.get('/api/users/me', {
       headers: {
         'Content-Type': 'application/json',
         authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(token)
     });
 };
 
