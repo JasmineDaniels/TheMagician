@@ -13,10 +13,9 @@ router.get('/', async (req, res) => {
 
 router.get('/me', authMiddleware, async (req, res) => {
     try {
-        console.log(req.user)
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
-        }).lean()
+        })
         if (!getUser){
             res.status(404).json({message: `No user found with this id`})
         }

@@ -20,12 +20,14 @@ export default function Portal (){
                 }
         
                 const response = await getMe(token);
+                console.log(response, `This is the response`)
+                // if (!response.ok) {
+                // throw new Error('something went wrong!');
+                // }
         
-                if (!response.ok) {
-                throw new Error('something went wrong!');
-                }
-        
-                const user = await response.json();
+                //const user = await response.json();
+                const user = response.data;
+                console.log(user, `this is the user`)
                 setUserData(user);
             } catch (err) {
                 console.error(err);
@@ -33,11 +35,12 @@ export default function Portal (){
         };
     
         getUserData();
-    },[]); //, [userDataLength]
+    }, [userDataLength]); 
 
-    if (!userData) {
+    if (!userDataLength) {
         return <h2>LOADING...</h2>;
     }
+    console.log(userData, `this is the user data`)
 
     return (
 
@@ -49,7 +52,7 @@ export default function Portal (){
         <div>
             {userData.username}
             {/* userData.results.map */}
-            {userData.results}
+            {userData.results[0]._id}
         </div>
 
         // <section className="container">
