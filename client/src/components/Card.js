@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import '../css/card.css'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-//import c04 from '../images/c04.jpg'
+import { Container, Row, Col, Modal } from 'react-bootstrap';
 import m01 from '../images/m01.jpg'
 //import axios from 'axios'
 import { createResults } from '../utils/API';
@@ -11,7 +8,8 @@ import { createResults } from '../utils/API';
 
 export default function Card ({ cards }){
     const [selected, setSelected] = useState([])
-    const [submit, setSubmit] = useState(false)
+    const [showModal, setShowModal] = useState(false);
+    //const [submit, setSubmit] = useState(false)
     const [flip, setFlip] = useState({
         "1": false,
         "2": false,
@@ -93,22 +91,23 @@ export default function Card ({ cards }){
         "78": false,
     })
 
-    const handleSubmit = async (selectedArr) => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         try {
-            console.log(`I am submitting...`)
-            // await axios.get(`api/cards/${cardOne}`)
-            // await axios.get(`api/cards/${cardTwo}`)
-            // await axios.get(`api/cards/${cardThree}`)
             
+            console.log(`I am submitting...`)
             const token = localStorage.getItem('id_token')
             if (!token){
-                alert(`please sign in 1`)
+                alert(`Please sign in to get your results!`)
+                return;
             }
-            const results = await createResults(token, selectedArr)
+            const results = await createResults(token, selected)
             console.log(results)
-            // if (!results.ok){
-            //     alert(`Results not found`)  
-            // }
+            if (!results){
+                alert(`Results not found`)  
+            }
+
+            //SetFlip to false for all 
 
             window.location.replace('/portal')
         } catch (error) {
@@ -117,7 +116,7 @@ export default function Card ({ cards }){
         
     }
 
-    const handleFlip = (e) => {
+    const handleFlip = async (e) => {
         if (selected.length !== 3){
             console.log(e)
             const { target } = e;
@@ -133,27 +132,40 @@ export default function Card ({ cards }){
                     setFlip(newObj);
                 }
             }
-        
+            //useEffect
+            // const cardOne = await axios.get(`api/cards/${selected[0]}`)
+            // console.log(cardOne)
+            // const cardTwo = await axios.get(`api/cards/${selected[1]}`)
+            // const cardThree = await axios.get(`api/cards/${selected[2]}`)
+
         } else {
-            setSubmit(true)
+            //setSubmit(true)
             console.log(selected)
+            setShowModal(true)
             // const [ cardOne, cardTwo, cardThree ] = selected
             // console.log(cardOne)
             // console.log(cardTwo)
             // console.log(cardThree)
             //handleSubmit(cardOne, cardTwo, cardThree)
-            handleSubmit(selected)
+            //handleSubmit(selected)
         }
         
     }
     
     return (
         <Container>
+            {/* <div>
+                <button className={submit ? 'btn btn-success mx-auto' : 'btn btn-success mx-auto disabled'}>
+                        Get Reading!
+                </button>
+            </div> */}
 
-            <div className="d-flex">
-                <button className={submit ? 'btn btn-success mx-auto' : 'none'}
-                onClick={handleSubmit}>Get Results</button>
-            </div>
+            {/* <div className="d-flex">
+                <h2>{cardOne.name}</h2>
+                <div className='card__face'>
+                    <img src={require(`../images/${cardOne.img}`)} alt='card-front' className='card-fit'></img>
+                </div>
+            </div> */}
             <Row >
                 
                 {cards.flatMap((card, index) => (
@@ -175,9 +187,36 @@ export default function Card ({ cards }){
                         
                     </Col>
                 ))}
-                
 
             </Row>
+            <Modal
+                size='lg'
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                aria-labelledby='cards-modal'>
+                <Modal.Header closeButton>
+                    <Modal.Title id='cards-modal'>
+                        <h3>Your Results are In!</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Get Your Full Reading by pressing 'Get Reading' Below</p>
+                    <div >
+                        {selected[0]}{selected[1]}{selected[2]}
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <div>
+                        <button className='btn btn-success ' onClick={handleSubmit}>
+                            Get Reading!
+                        </button>
+                        <button className='btn btn-danger ' handleModalClose={() => setShowModal(false)}>
+                            No thanks
+                        </button>
+                    </div>
+                    
+                </Modal.Footer>
+            </Modal>
             
         </Container>
     
