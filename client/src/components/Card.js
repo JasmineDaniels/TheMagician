@@ -106,9 +106,9 @@ export default function Card ({ cards }){
             }
             const results = await createResults(token, selectedArr)
             console.log(results)
-            if (!results.ok){
-                alert(`Results not found`)  
-            }
+            // if (!results.ok){
+            //     alert(`Results not found`)  
+            // }
 
             window.location.replace('/portal')
         } catch (error) {

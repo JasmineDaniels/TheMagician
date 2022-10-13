@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { validateEmail, checkPassword } from '../utils/helpers.js'
+// import { validateEmail, checkPassword } from '../utils/helpers.js'
 import '../css/signin.css'
 import { loginUser } from '../utils/API.js';
 import Auth from '../utils/auth';
@@ -34,19 +34,19 @@ export default function SignIn (){
                 return;
             }
     
-            const checkEmail = validateEmail(email)
-            if (!checkEmail ){
-                alert('Please enter a valid Email')
-                return;
-            } 
+            // const checkEmail = validateEmail(email)
+            // if (!checkEmail ){
+            //     alert('Please enter a valid Email')
+            //     return;
+            // } 
 
-            const checkPW = checkPassword(password)
-            if (!checkPW) {
-                alert(
-                  `Choose a more secure password for the account: ${email}`
-                );
-                return;
-            }
+            // const checkPW = checkPassword(password)
+            // if (!checkPW) {
+            //     alert(
+            //       `Choose a more secure password for the account: ${email}`
+            //     );
+            //     return;
+            // }
             
 
             const res = await loginUser(email, password)

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { createUser } from "../utils/API";
 import Auth from '../utils/auth';
+import { validateEmail, checkPassword } from '../utils/helpers.js';
+
 
 export default function SignUp(){
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
@@ -23,19 +25,21 @@ export default function SignUp(){
                 e.stopPropagation();
             }
 
-            // const checkEmail = validateEmail(email)
-            // if (!checkEmail ){
-            //     alert('Please enter a valid Email')
-            //     return;
-            // } 
+            console.log(userFormData, `this is the form data`)
 
-            // const checkPW = checkPassword(password)
-            // if (!checkPW) {
-            //     alert(
-            //       `Choose a more secure password for the account: ${email}`
-            //     );
-            //     return;
-            // }
+            const checkEmail = validateEmail(userFormData.email)
+            if (!checkEmail ){
+                alert('Please enter a valid Email')
+                return;
+            } 
+
+            const checkPW = checkPassword(userFormData.password)
+            if (!checkPW) {
+                alert(
+                  `Please choose a more secure password.\nPassword must be atleast 8 characters long. \nPassword must have a capital letter. \nPassword must contain a number.\nPassword must contain atleast one of these special characters\n ! or ?`
+                );
+                return;
+            }
             
             const res = await createUser(userFormData)
             if(!res.ok){
