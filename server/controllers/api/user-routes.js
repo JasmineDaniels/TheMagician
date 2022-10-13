@@ -76,7 +76,7 @@ router.post('/results', authMiddleware, async (req, res) => {
         const updateUser = await User.findOneAndUpdate(
             //{_id: req.params.myId},
             {_id: req.user._id},
-            {$addToSet: {results: [cards]}}, //req.params.card_id
+            {$addToSet: {results: cards}}, //req.params.card_id
             {runValidators: true, returnOriginal: false}
         )
         if (!updateUser){

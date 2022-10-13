@@ -8,7 +8,7 @@ export default function Portal (){
     const [userData, setUserData] = useState({});
 
     // use this to determine if `useEffect()` hook needs to run again
-    const userDataLength = Object.keys(userData).length;
+    //const userDataLength = Object.keys(userData).length;
 
     useEffect(() => {
         const getUserData = async () => {
@@ -35,11 +35,11 @@ export default function Portal (){
         };
     
         getUserData();
-    }, [userDataLength]); 
+    }, []); 
 
-    if (!userDataLength) {
-        return <h2>LOADING...</h2>;
-    }
+    // if (!userDataLength) {
+    //     return <h2>LOADING...</h2>;
+    // }
     console.log(userData, `this is the user data`)
 
     return (
@@ -52,7 +52,7 @@ export default function Portal (){
         <div>
             {userData.username}
             {/* userData.results.map */}
-            {userData.results[0]._id}
+            
         </div>
 
         // <section className="container">
