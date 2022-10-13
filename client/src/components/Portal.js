@@ -6,7 +6,7 @@ import { getMe } from '../utils/API';
 
 export default function Portal (){
     const [userData, setUserData] = useState({});
-
+    const [userResults, setUserResults] = useState('')
     // use this to determine if `useEffect()` hook needs to run again
     //const userDataLength = Object.keys(userData).length;
 
@@ -27,8 +27,10 @@ export default function Portal (){
         
                 //const user = await response.json();
                 const user = response.data;
+                const cards = response.data.results
                 console.log(user, `this is the user`)
                 setUserData(user);
+                setUserResults(cards)
             } catch (err) {
                 console.error(err);
             }
@@ -37,10 +39,11 @@ export default function Portal (){
         getUserData();
     }, []); 
 
-    // if (!userDataLength) {
-    //     return <h2>LOADING...</h2>;
-    // }
+    if (!userData) {
+        return <h2>LOADING...</h2>;
+    }
     console.log(userData, `this is the user data`)
+    console.log(userResults, `this is the user results`)
 
     return (
 
@@ -50,8 +53,40 @@ export default function Portal (){
         // </div>
 
         <div>
-            {userData.username}
-            {/* userData.results.map */}
+            {/* {cards.map((card, index) => ( */}
+            <h1>Portal</h1>
+            
+                <div className="container">
+                    <p> {userData.username}</p>
+                    <div className="row">
+                        {userResults && userResults.map((result, index) => (
+                            <div className='col-md-4'>
+                                <div className="result-card" key={index}>
+                                    <div className="card-header">
+                                        <h4>{result.name} - {result.number}</h4>
+                                    </div>
+                                    <div className="card-body">
+                                        <div className='img-adjust'>
+                                            <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='card-fit'></img>
+                                        </div>
+                                        <div className='my-2'>
+                                            <p>{result.arcana}</p>
+                                            <p>{result.fortune_telling[0]}, {result.fortune_telling[1]}, {result.fortune_telling[2]}</p>
+                                            
+                                            <p>{result.Affirmation}</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        ))}
+                        
+
+                    </div>
+                    
+                </div>
+            
             
         </div>
 

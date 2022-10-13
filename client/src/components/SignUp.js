@@ -22,6 +22,20 @@ export default function SignUp(){
                 e.preventDefault();
                 e.stopPropagation();
             }
+
+            // const checkEmail = validateEmail(email)
+            // if (!checkEmail ){
+            //     alert('Please enter a valid Email')
+            //     return;
+            // } 
+
+            // const checkPW = checkPassword(password)
+            // if (!checkPW) {
+            //     alert(
+            //       `Choose a more secure password for the account: ${email}`
+            //     );
+            //     return;
+            // }
             
             const res = await createUser(userFormData)
             if(!res.ok){
