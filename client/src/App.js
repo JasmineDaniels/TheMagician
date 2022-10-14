@@ -6,10 +6,13 @@ import AppNavbar from './components/Navbar';
 import Home from './components/Home';
 import Play from './components/Play';
 import Portal from './components/Portal';
+import './css/root.css'
 //import SignIn from './components/SignIn'
 
 export default function App (){
     return (
+      <>
+        <div className='root maximize'>
         <Router>
       <>
         <Header/>
@@ -23,5 +26,7 @@ export default function App (){
         </Routes>
       </>
     </Router>
+    </div>
+    </>
     )
 }

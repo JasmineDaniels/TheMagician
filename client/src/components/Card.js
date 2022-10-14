@@ -9,7 +9,7 @@ import { createResults } from '../utils/API';
 export default function Card ({ cards }){
     const [selected, setSelected] = useState([])
     const [showModal, setShowModal] = useState(false);
-    //const [submit, setSubmit] = useState(false)
+    //const [cardData, setCardData] = useState([])
     const [flip, setFlip] = useState({
         "1": false,
         "2": false,
@@ -132,22 +132,39 @@ export default function Card ({ cards }){
                     setFlip(newObj);
                 }
             }
-            //useEffect
-            // const cardOne = await axios.get(`api/cards/${selected[0]}`)
-            // console.log(cardOne)
-            // const cardTwo = await axios.get(`api/cards/${selected[1]}`)
-            // const cardThree = await axios.get(`api/cards/${selected[2]}`)
 
         } else {
-            //setSubmit(true)
-            console.log(selected)
+            
+            console.log(selected, `this is selected`)
             setShowModal(true)
-            // const [ cardOne, cardTwo, cardThree ] = selected
-            // console.log(cardOne)
-            // console.log(cardTwo)
-            // console.log(cardThree)
-            //handleSubmit(cardOne, cardTwo, cardThree)
-            //handleSubmit(selected)
+            // const [ nameOne, nameTwo, nameThree ] = selected
+            // try {
+            //     const cardOne = await axios.get(`api/cards/${nameOne}`)
+            //     const cardTwo = await axios.get(`api/cards/${nameTwo}`)
+            //     const cardThree = await axios.get(`api/cards/${nameThree}`)
+            //     console.log(cardOne, `this is card 1`)
+            //     console.log(cardTwo, `this is card 2`)
+            //     console.log(cardThree, `this is card 3`)
+            //     if (!cardOne && !cardTwo && !cardThree){
+            //         alert(`Opps! something went wrong`)
+            //     }
+            //     //setCardData(cardOne, cardTwo, cardThree)
+            //     const past = cardOne.data;
+            //     const present = await cardTwo.data;
+            //     const future = await cardThree.data;
+            //     console.log(past, `this is past`)
+            //     console.log(present, `this is present`)
+            //     console.log(future, `this is future`)
+                
+            //     setCardData(past, present, future)
+            //     console.log(cardData, `this is cardData`)
+            //     setShowModal(true)        
+                
+            // } catch (error) {
+            //     console.log(error)
+            // }
+            
+            
         }
         
     }
@@ -158,13 +175,6 @@ export default function Card ({ cards }){
                 <button className={submit ? 'btn btn-success mx-auto' : 'btn btn-success mx-auto disabled'}>
                         Get Reading!
                 </button>
-            </div> */}
-
-            {/* <div className="d-flex">
-                <h2>{cardOne.name}</h2>
-                <div className='card__face'>
-                    <img src={require(`../images/${cardOne.img}`)} alt='card-front' className='card-fit'></img>
-                </div>
             </div> */}
             <Row >
                 
@@ -189,7 +199,7 @@ export default function Card ({ cards }){
                 ))}
 
             </Row>
-            <Modal
+            <Modal 
                 size='lg'
                 show={showModal}
                 onHide={() => setShowModal(false)}
@@ -203,6 +213,16 @@ export default function Card ({ cards }){
                     <p>Get Your Full Reading by pressing 'Get Reading' Below</p>
                     <div >
                         {selected[0]}{selected[1]}{selected[2]}
+                        {/* {cardData.map((data, index) => {
+                            return(
+                                <div key={index}>
+                                <p>{data.name}</p>
+                                <img src={require(`../images/${data.img}`)} alt='data-img'></img>
+                                </div>
+                            )
+                        })} */}
+                        
+
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
