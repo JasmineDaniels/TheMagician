@@ -6,11 +6,11 @@
 
 .maximize {
     /* background-color: rgb(254, 230, 5); */
-    background-image: url("../images/big.png");
+    background-image: url("../images/fortune-bg.png");
     background-size: contain;
     background-repeat: no-repeat;
-    /* height: 100vh; */
-    /* padding-top: 150px;
-    padding-bottom: 210px; */
+    /* height: 100vh;  */
+    /* padding-top: 150px; */
+    /* padding-bottom: 210px; */
     
 }
