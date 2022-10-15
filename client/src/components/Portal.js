@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Auth from '../utils/auth';
 import { getMe } from '../utils/API';
+import '../css/result.css'
 
 export default function Portal (){
     const [userData, setUserData] = useState({});
@@ -13,10 +14,12 @@ export default function Portal (){
     useEffect(() => {
         const getUserData = async () => {
           try {
-                const token = Auth.getToken();
+                //const token = Auth.getToken();
+                const token = Auth.loggedIn() ? Auth.getToken() : null;
         
                 if (!token) {
-                return false;
+                    return false;
+                    //alert(`Please sign in`)
                 }
         
                 const response = await getMe(token);
@@ -57,21 +60,27 @@ export default function Portal (){
             <h1>Portal</h1>
             
                 <div className="container">
-                    <p> {userData.username}</p>
+                    <h1 className='text-center result-titles'> {userData.username}</h1>
                     <div className="row">
+                    
+                            <h1 className='col-md-4 text-center result-titles'>PAST</h1>
+                            <h2 className='col-md-4 text-center result-titles'>PRESENT</h2>
+                            <h2 className='col-md-4 text-center result-titles'>FUTURE</h2>
+                        
                         {userResults && userResults.map((result, index) => (
                             <div className='col-md-4'>
-                                <div className="result-card" key={index}>
-                                    <div className="card-header">
+                                <div className=" card result-card my-2" key={index}>
+                                    <div className="card-header text-center">
                                         <h4>{result.name} - {result.number}</h4>
                                     </div>
                                     <div className="card-body">
-                                        <div className='img-adjust'>
-                                            <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='card-fit'></img>
+                                        <div className='img-adjust mx-auto'>
+                                            <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
                                         </div>
                                         <div className='my-2'>
                                             <p>{result.arcana}</p>
                                             <p>{result.fortune_telling[0]}, {result.fortune_telling[1]}, {result.fortune_telling[2]}</p>
+                                            <p>{result.meanings.light}</p>
                                             
                                             <p>{result.Affirmation}</p>
                                         </div>

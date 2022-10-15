@@ -1,9 +1,19 @@
-.img-adjust{
-    height: 150px;
-    width: 150px;
+.result-titles{
+    font-family: 'Magic', 'sans-serif';
+    
 }
 
-.img-adjust .card-fit{
+.result-card{
+    width: fit-content;
+    /* background-color: transparent; */
+}
+
+.img-adjust{
+    height: 350px;
+    
+}
+
+.img-adjust .img-fit{
     height: 100%;
     width: 100%;
     object-fit: contain;

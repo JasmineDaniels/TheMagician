@@ -57,19 +57,36 @@ router.post('/login', async (req, res) => {
 })
 
 //Create users results       /:myId/results/:name
+// router.post('/results', authMiddleware, async (req, res) => {
+//     try {
+//         //console.log(req.user)
+//         console.log(req.body.body)
+//         const names = JSON.parse(req.body.body)
+//         const cards = await Card.find({ 'name': { $in: names } }).lean();
+//         if(!cards){
+//             res.status(404).json({message: `Could not find cards`})
+//         }
+//         const updateUser = await User.findOneAndUpdate(
+//             //{_id: req.params.myId},
+//             {_id: req.user._id},
+//             {$addToSet: {results: cards}}, //req.params.card_id
+//             {runValidators: true, returnOriginal: false}
+//         )
+//         if (!updateUser){
+//             res.status(404).json({message: `No user with this id.`})
+//         }
+//         res.status(200).json({message: `successfully added cards to users result-set`})
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// })
+
 router.post('/results', authMiddleware, async (req, res) => {
     try {
         //console.log(req.user)
         console.log(req.body.body)
         const names = JSON.parse(req.body.body)
         const cards = await Card.find({ 'name': { $in: names } }).lean();
-        // const cards = await Card.find(
-        //     {"name": { $in: [
-        //         req.body[0],
-        //         req.body[1],
-        //         req.body[2],
-        //     ]
-        // }})
         if(!cards){
             res.status(404).json({message: `Could not find cards`})
         }
@@ -87,7 +104,6 @@ router.post('/results', authMiddleware, async (req, res) => {
         res.status(500).json(error)
     }
 })
-
 
 
 

@@ -2,13 +2,14 @@
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 import Card from "./Card"
-import cards from '../utils/cards.json'
+import { useEffect, useState } from 'react'
+//import cards from '../utils/cards.json'
 //import Result from "./Result"
 //import Card from "./Card"
-//import axios from 'axios'
+import axios from 'axios'
 
 export default function Play (){
-
+    const [cards, setCards] = useState([])
     // const shuffleCards = () => {
     //     for (let i = cards.length - 1; i > 0; i--) {
     //         const newIndex = Math.floor(Math.random() * (i + 1));
@@ -20,9 +21,21 @@ export default function Play (){
     // }
 
     // shuffleCards()
-    
+    useEffect(() => {
+        const getAllCards = async () => {
+            const allCard = await axios.get('/api/cards/', {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            const card = allCard.data;
+            setCards(card)
+            console.log(card)
+        }
+        getAllCards()
+    }, [])
 
-    //const card = axios.get('http://localhost:3001/api/cards/')
+    
     return (
         <div>
             <h1 id="PLAY" className="text-center">PLAY</h1>
