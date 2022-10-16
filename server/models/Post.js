@@ -12,25 +12,29 @@ const postSchema = new Schema(
         username: {
             type: String,
         },
-        content: { 
+        message: { 
             type: String,
             minLength: 10,
             maxLength: 400,
         },
-        result: [
+        results: [
             {
-                name: String,
-                number: String,
-                arcana: String,
-                img: String,
-                fortune_telling: Array,
-                keywords: Array,
-                meanings: Object,
-                Numerolgy: String,
-                Astrology: String,
-                Affirmation: String,
-                Questions: Array,
-            }
+                type: Schema.Types.ObjectId,
+                ref: 'card',
+            },
+            // {
+            //     name: String,
+            //     number: String,
+            //     arcana: String,
+            //     img: String,
+            //     fortune_telling: Array,
+            //     keywords: Array,
+            //     meanings: Object,
+            //     Numerolgy: String,
+            //     Astrology: String,
+            //     Affirmation: String,
+            //     Questions: Array,
+            // }
         ]
         ,
         createdAt: {
@@ -52,7 +56,7 @@ const postSchema = new Schema(
 
 
 
-const Post = model('result', postSchema)
+const Post = model('post', postSchema)
 
 module.exports = Post;
 //module.exports = resultSchema;

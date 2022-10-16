@@ -15,7 +15,7 @@ router.get('/me', authMiddleware, async (req, res) => {
     try {
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
-        }).populate("results")
+        }).populate({path: "results",  options: {sort: {createdAt: -1}}})
         if (!getUser){
             res.status(404).json({message: `No user found with this id`})
         }
@@ -27,18 +27,32 @@ router.get('/me', authMiddleware, async (req, res) => {
 
 
 //Create A Post
-router.post('/post/:_id', async (req, res) => {
+router.post('/post', authMiddleware, async (req, res) => {
     try {
+        console.log(req.user)
+        console.log(req.body);
+        // const [ results ] = req.body.userResults
+        // const post = {
+        //     user_id: req.user._id,
+        //     username: req.user.username,
+        //     message: req.body.message,
+            
+        // }
         const newPost = await Post.create(req.body);
         const updateUser = await User.findOneAndUpdate(
-            //{username: req.body.username},
             {_id: req.user._id},
-            //add new thought id to the array of thoughts
             {$addToSet: {posts: newPost}}, // $push
             {runValidators: true, returnOriginal: false}
         ).populate('posts')
+
+        if (!updateUser){
+            res.status(404).json({message: `Could not create post at this time.`})
+        }
+
+        res.json(updateUser)
     } catch (error) {
-        
+        console.log(error)
+        res.status(500).json(error)
     }
    
 })

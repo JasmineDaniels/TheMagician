@@ -21,7 +21,7 @@ export const createResults = (token, data) => {
 };
 
 export const createPost = (token, data) => {
-  return fetch('/api/users/posts', {
+  return fetch('/api/users/post', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

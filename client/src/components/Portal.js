@@ -32,13 +32,20 @@ export default function Portal (){
 
         const token = Auth.getToken()
 
+
         const data = {
             message: message,
-            userData,
-            userData
+            user_id: userData._id,
+            username:userData.username,
+            results: userResults.map((user) => {
+                return user._id
+            }),
         }
 
         const response = await createPost(token, data)
+        if (!response){
+            alert(`please sign in..`)
+        }
     }
 
     useEffect(() => {
