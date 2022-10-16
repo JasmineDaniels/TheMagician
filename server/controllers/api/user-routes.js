@@ -15,7 +15,7 @@ router.get('/me', authMiddleware, async (req, res) => {
     try {
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
-        })
+        }).populate("results")
         if (!getUser){
             res.status(404).json({message: `No user found with this id`})
         }
@@ -83,23 +83,27 @@ router.post('/login', async (req, res) => {
 
 router.post('/results', authMiddleware, async (req, res) => {
     try {
-        //console.log(req.user)
-        console.log(req.body.body)
-        const names = JSON.parse(req.body.body)
-        const cards = await Card.find({ 'name': { $in: names } }).lean();
-        if(!cards){
-            res.status(404).json({message: `Could not find cards`})
-        }
+        
+        const data = JSON.parse(req.body.body)
+        console.log(data)
+        //const [ _id, ...rest ] = names
+        const [ one, two, three ] = data
+        const first = one._id
+        const second = two._id
+        const third = three._id
+        //const resultID = data._id
+        
         const updateUser = await User.findOneAndUpdate(
             //{_id: req.params.myId},
             {_id: req.user._id},
-            {$addToSet: {results: cards}}, //req.params.card_id
+            {$addToSet: {results: [{_id: first}, {_id: second},{ _id: third}]}}, //req.params.card_id
+            //{$addToSet: {results: { _id: resultID}}}, //req.params.card_id
             {runValidators: true, returnOriginal: false}
         )
         if (!updateUser){
             res.status(404).json({message: `No user with this id.`})
         }
-        res.status(200).json({message: `successfully added cards to users result-set`})
+        res.status(200).json({message: `successfully added card to users result-set`})
     } catch (error) {
         res.status(500).json(error)
     }

@@ -23,9 +23,9 @@ export default function CardTemplate ({card, selected, setSelected}) {
             }
             const results = await createResults(token, selected)
             console.log(results)
-            if (!results){
-                alert(`Results not found`)  
-            }
+            // if (!results){
+            //     alert(`Results not found`)  
+            // }
 
             //SetFlip to false for all 
 
@@ -42,8 +42,24 @@ export default function CardTemplate ({card, selected, setSelected}) {
         setSelected(example)
         console.log(example)
 
-        if(selected.length === 3){
+        if(selected.length === 2){
+
             setShowModal(true)
+            // const [ past, present , future ] = selected
+
+            // const token = localStorage.getItem('id_token')
+            // if (!token){
+            //     alert(`Please sign in to get your results!`)
+            //     return;
+            // }
+
+            // const resultOne = await createResults(token, past)
+            // const resultTwo = await createResults(token, present)
+            // const resultThree = await createResults(token, future)
+            // if (resultOne && resultTwo && resultThree){
+            //     setShowModal(true)
+            // }
+            
         }
     }
     return (
@@ -77,16 +93,19 @@ export default function CardTemplate ({card, selected, setSelected}) {
         </Modal.Header>
         <Modal.Body>
             <p>Get Your Full Reading by pressing 'Get Reading' Below</p>
-            <div >
+            <div className='row' >
                 
-                
-                    
-                        
-                <p>{card.name}</p>
-                <img src={require(`../images/${card.img}`)} alt='data-img'></img>
-                        
-                    
-                
+                {selected.map((data, index) => {
+                    return(
+                        <div key={index} className='col-md-4'>
+                            <p className='text-center'>{data.name}</p>
+                        <div className='img-adjust'>
+                            
+                            <img src={require(`../images/${data.img}`)} alt='data-img' className='img-fit'></img>
+                        </div>
+                        </div>
+                    )
+                })} 
                 
 
             </div>

@@ -1,7 +1,7 @@
 const { model, Schema } = require("mongoose");
 //const resultSchema = require('./Result')
 const bcrypt = require('bcrypt');
-const resultSchema = require("./Result");
+//const resultSchema = require("./Result");
 
 function validateEmail(email){
     const re = /^([a-z0-9A-Z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,6})?$/
@@ -29,7 +29,12 @@ const userSchema = new Schema(
             type: String,
             required: true
         },
-        results: [resultSchema],
+        results: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'card',
+            },
+        ],
         // results: [
         //     {
         //         name: String,
