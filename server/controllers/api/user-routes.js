@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Card } = require("../../models");
+const { User, Card, Post } = require("../../models");
 const { signToken, authMiddleware } = require('../../utils/auth')
 
 router.get('/', async (req, res) => {
@@ -23,6 +23,24 @@ router.get('/me', authMiddleware, async (req, res) => {
     } catch (error) {
         res.status(500).json(error)
     }
+})
+
+
+//Create A Post
+router.post('/post/:_id', async (req, res) => {
+    try {
+        const newPost = await Post.create(req.body);
+        const updateUser = await User.findOneAndUpdate(
+            //{username: req.body.username},
+            {_id: req.user._id},
+            //add new thought id to the array of thoughts
+            {$addToSet: {posts: newPost}}, // $push
+            {runValidators: true, returnOriginal: false}
+        ).populate('posts')
+    } catch (error) {
+        
+    }
+   
 })
 
 router.post('/signup', async (req, res) => {

@@ -20,11 +20,18 @@ export const createResults = (token, data) => {
   });
 };
 
-// body: JSON.stringify({
-//   cardOne,
-//   cardTwo,
-//   cardThree
-// })
+export const createPost = (token, data) => {
+  return fetch('/api/users/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data)
+  });
+};
+
+
   
 export const createUser = (userData) => {
     return fetch('/api/users/signup', {
