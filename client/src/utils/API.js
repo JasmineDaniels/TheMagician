@@ -31,6 +31,28 @@ export const createPost = (token, data) => {
   });
 };
 
+export const updatePost = (data) => {
+  return fetch('/api/users/post', {
+    method: 'PUT',
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   authorization: `Bearer ${token}`,
+    // },
+    body: JSON.stringify(data)
+  });
+};
+
+export const deletePost = (token, data) => {
+  return fetch('/api/users/post', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data)
+  });
+};
+
 
   
 export const createUser = (userData) => {

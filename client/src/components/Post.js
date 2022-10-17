@@ -2,15 +2,16 @@ import { Col } from 'react-bootstrap';
 
 function Post({ post }) {
     return (
-        <Col md={9} className='mx-auto'>
+        <Col md={9} className='mx-auto my-3'>
 
             <div className='card post-card'>
                 <div className='card-header'>
-                    <h5>{post.username}</h5>
+                    <h5 className='float-start'>{post.username}</h5>
+                    <p className='float-end'>{post.createdAt}</p>
                 </div>
                 <div className='card-body  mx-auto'>
                     <div>
-                        <p>{post.message}</p>
+                        <p className='text-center'>{post.message}</p>
                     </div>
 
                     <div className='row'>

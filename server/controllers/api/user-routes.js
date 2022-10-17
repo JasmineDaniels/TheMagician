@@ -11,11 +11,13 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Get A user
 router.get('/me', authMiddleware, async (req, res) => {
     try {
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
         }).populate({path: "results",  options: {sort: {createdAt: -1}}})
+        .populate({ path: "posts", populate: { path: "results"}})
         if (!getUser){
             res.status(404).json({message: `No user found with this id`})
         }
@@ -25,7 +27,6 @@ router.get('/me', authMiddleware, async (req, res) => {
     }
 })
 
-
 //Create A Post
 router.post('/post', authMiddleware, async (req, res) => {
     try {
@@ -34,7 +35,7 @@ router.post('/post', authMiddleware, async (req, res) => {
         const newPost = await Post.create(req.body);
         const updateUser = await User.findOneAndUpdate(
             {_id: req.user._id},
-            {$addToSet: {posts: newPost}}, // $push
+            {$addToSet: {posts: newPost._id}}, // $push
             {runValidators: true, returnOriginal: false}
         ).populate('posts')
 
@@ -50,6 +51,45 @@ router.post('/post', authMiddleware, async (req, res) => {
    
 })
 
+//Update A Post
+router.put('/post', async (req, res) => {
+    try {
+        console.log(req.body)
+        //console.log(req.user)
+        const update = req.body;
+        const postData = await Post.findOneAndUpdate(
+            {_id: req.body._id},
+            {$set: update},
+            {runValidators: true, returnOriginal: false}
+        )
+        if(!postData){
+            res.status(404).json("This post doesn't exist.")
+        }   
+        res.json(postData)
+        // { message: `Post has been updated.`, postData}
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error)
+    }
+})
+
+//Delete A Post
+router.delete('/post', authMiddleware, async (req, res) => {
+    console.log(req.body)
+    const postData = await Post.findByIdAndDelete({ _id: req.body._id})
+    if (!postData) {res.json({ message: `No post with this id.`})}
+    const updateUser = await User.findOneAndUpdate(
+        {_id: req.body.user_id},
+        {$pull: { posts: req.body._id}},
+        {new: true}
+    )
+    
+    !updateUser  
+    ? res.status(500).json({ message: 'Post was deleted, but was not assigned to a user..'})
+    : res.json({ message: `Post ${req.body._id} has been deleted.`})
+})
+
+// Create a user
 router.post('/signup', async (req, res) => {
     console.log(req.body);
     const user = await User.create(req.body);
@@ -60,6 +100,7 @@ router.post('/signup', async (req, res) => {
     res.json({ token, user });
 })
 
+// Login a user
 router.post('/login', async (req, res) => {
     try {
         console.log(req.body)
@@ -81,7 +122,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//Create users results       /:myId/results/:name
+//Create users results       
 // router.post('/results', authMiddleware, async (req, res) => {
 //     try {
 //         //console.log(req.user)
@@ -106,6 +147,7 @@ router.post('/login', async (req, res) => {
 //     }
 // })
 
+//Create users results
 router.post('/results', authMiddleware, async (req, res) => {
     try {
         
