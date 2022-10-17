@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { createPost, getMe } from '../utils/API';
 import '../css/result.css'
 
-export default function Portal (){
+export default function Portal() {
     const [message, setMessage] = useState('')
     const [showAddPost, setShowAddPost] = useState(false)
     const [userData, setUserData] = useState({});
@@ -13,19 +13,23 @@ export default function Portal (){
     // use this to determine if `useEffect()` hook needs to run again
     //const userDataLength = Object.keys(userData).length;
 
+    function handleShowPostForm (){
+        setShowAddPost(showAddPost => !showAddPost)
+    }
+
     const handleInputChange = (e) => {
         const { target } = e;
         const inputType = target.name;
         const inputValue = target.value;
 
-        if (inputType === 'message'){
+        if (inputType === 'message') {
             setMessage(inputValue);
         }
     }
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
-        if (!message){
+        if (!message) {
             alert(`This field is required.`)
             return;
         }
@@ -36,35 +40,35 @@ export default function Portal (){
         const data = {
             message: message,
             user_id: userData._id,
-            username:userData.username,
+            username: userData.username,
             results: userResults.map((user) => {
                 return user._id
             }),
         }
 
         const response = await createPost(token, data)
-        if (!response){
+        if (!response) {
             alert(`please sign in..`)
         }
     }
 
     useEffect(() => {
         const getUserData = async () => {
-          try {
+            try {
                 //const token = Auth.getToken();
                 const token = Auth.loggedIn() ? Auth.getToken() : null;
-        
+
                 if (!token) {
                     return false;
                     //alert(`Please sign in`)
                 }
-        
+
                 const response = await getMe(token);
                 console.log(response, `This is the response`)
                 // if (!response.ok) {
                 // throw new Error('something went wrong!');
                 // }
-        
+
                 //const user = await response.json();
                 const user = response.data;
                 const cards = response.data.results
@@ -75,9 +79,9 @@ export default function Portal (){
                 console.error(err);
             }
         };
-    
+
         getUserData();
-    }, []); 
+    }, []);
 
     if (!userData) {
         return <h2>LOADING...</h2>;
@@ -87,110 +91,119 @@ export default function Portal (){
 
     return (
 
-        // <div>
-        //     <h1 className='text-center my-5'> USER PORTAL</h1>
-        //     <Result cards={cards}/>
-        // </div>
+        <div className="container">
+            <h1 className='text-center result-titles'> {userData.username}</h1>
 
-        <div>
-            <h1 className='text-center'>Portal</h1>
-            
-                <div className="container">
-                    <h1 className='text-center result-titles'> {userData.username}</h1>
-
-                    <div show={showAddPost} onHide={() => setShowAddPost(false)} className='my-5'>
-
-                        <div className='row'>
-                            <div className='col-md-6 mx-auto my-4'>
-                                <div className="form-group">
-                                    {/* <label for="Textarea1" className="mb-1">Message:</label> */}
-                                    <textarea 
-                                    className="form-control" 
-                                    id="TextArea1" 
-                                    name="message"
-                                    value={message}
-                                    onChange={handleInputChange}
-                                    rows="3" 
-                                    placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='card-body col-md-8 mx-auto'>
-                        <div className='row'>
-                            {userResults && userResults.map((result, index) => (
-                                <div className='col-md-4'>
-                                    <div className=" card result-card my-2" key={index}>
-                                        <div className="card-header text-center">
-                                            <h4>{result.name} </h4>
-                                        </div>
-                                        <div className="card-body">
-                                            <div className='img-adjust mx-auto'>
-                                                <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
-                                            </div>
-    
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            ))}
-                        </div>
-                        </div>
-                        
-
-                        <div className='d-flex my-3' >
-                            <button className='btn btn-success mx-auto' onClick={handlePostSubmit}>
-                                Add Post
-                            </button>
+            <div className={showAddPost ? 'my-5' : 'none'}>
+                
+                <div className='mx-auto'>
+                <h3 className='text-center'>Share your resulsts with your friends! <br></br> 
+                Remember to Decipher your reading for yourself. <br></br> Share what you've learned below. <br></br> 
+                Don't forget to write about your reading in your dream journal! </h3>
+                </div>
+                <div className='row'>
+                    <div className='col-md-6 mx-auto my-4'>
+                        <div className="form-group">
+                            {/* <label for="Textarea1" className="mb-1">Message:</label> */}
+                            <textarea
+                                className="form-control"
+                                id="TextArea1"
+                                name="message"
+                                value={message}
+                                onChange={handleInputChange}
+                                rows="3"
+                                placeholder="Message"></textarea>
                         </div>
                     </div>
-                    
-                    
+                </div>
 
-
-                    <div className="row">
-                    
-                        <h1 className='col-md-4 text-center result-titles'>PAST</h1>
-                        <h2 className='col-md-4 text-center result-titles'>PRESENT</h2>
-                        <h2 className='col-md-4 text-center result-titles'>FUTURE</h2>
-                        
+                <div className='card-body col-md-8 mx-auto'>
+                    <div className='row'>
                         {userResults && userResults.map((result, index) => (
                             <div className='col-md-4'>
                                 <div className=" card result-card my-2" key={index}>
                                     <div className="card-header text-center">
-                                        <h4>{result.name} - {result.number}</h4>
+                                        <h4>{result.name} </h4>
                                     </div>
                                     <div className="card-body">
                                         <div className='img-adjust mx-auto'>
                                             <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
                                         </div>
-                                        <div className='my-2'>
-                                            <p>{result.arcana}</p>
-                                            <p>{result.fortune_telling[0]}, {result.fortune_telling[1]}, {result.fortune_telling[2]}</p>
-                                            <p>{result.meanings.light}</p>
-                                            
-                                            <p>{result.Affirmation}</p>
-                                        </div>
-                                        
+
+
                                     </div>
                                 </div>
                             </div>
-                            
-                        ))}
-                        
-                        <div className='d-flex my-3'>
-                            <button className='btn btn-success mx-auto' onClick={() => setShowAddPost(true)}>
-                                Create Post
-                            </button>
-                        </div>
-                        
 
+                        ))}
                     </div>
-                    
                 </div>
-            
-            
+
+
+                <div className='d-flex my-3' >
+                    <button className='btn btn-success mx-auto' onClick={handlePostSubmit}>
+                        Add Post
+                    </button>
+                </div>
+            </div>
+
+
+
+
+            <div className="row">
+
+                <div className='d-flex my-3'>
+                    <button className='btn btn-success mx-auto' onClick={handleShowPostForm}>
+                        Create Post
+                    </button>
+                </div>
+
+                <h1 className='col-md-4 text-center result-titles'>PAST</h1>
+                <h1 className='col-md-4 text-center result-titles'>PRESENT</h1>
+                <h1 className='col-md-4 text-center result-titles'>FUTURE</h1>
+
+                {userResults && userResults.map((result, index) => (
+                    <div className='col-md-4'>
+                        <div className=" card result-card my-2" key={index}>
+                            <div className="card-header text-center">
+                                <h4 className='result-titles'>{result.name}</h4>
+                            </div>
+                            <div className="card-body">
+                                <div className='img-adjust mx-auto'>
+                                    <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
+                                </div>
+                                <div className='my-2 text-center'>
+                                
+                                    <p className='result-info'>{result.arcana}</p>
+                                    <p className='result-info'>Number: {result.number}</p>
+                                    <p>{result.Astrology}</p>
+                                    <p className='result-info'>Keywords:</p>
+                                    <p> {result.keywords[0]}, {result.keywords[1]}, {result.keywords[2]}</p>
+                                    <p>{result.Affirmation}</p>
+                                    <p className='result-info'>Meaning:</p>
+                                    <p>{result.meanings.light[0]}, {result.meanings.light[1]}, {result.meanings.light[2]}, {result.meanings.light[3]}, {result.meanings.light[4]}, {result.meanings.light[5]}, {result.meanings.light[6]}, {result.meanings.light[7]}, {result.meanings.light[8]}</p>
+                                    <p className='result-info'>Projected Fortune</p>
+                                    <p>{result.fortune_telling[0]}, {result.fortune_telling[1]}, {result.fortune_telling[2]}</p>
+                                    <p className='result-info'>Questions to Ask Yourself</p>
+                                    <p>{result.Questions[0]}, {result.Questions[1]}, {result.Questions[2]}</p>
+
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                ))}
+
+                
+
+
+            </div>
+
         </div>
+
+
+
     )
 }

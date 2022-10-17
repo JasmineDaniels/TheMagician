@@ -8,6 +8,18 @@ import Auth from '../utils/auth';
 import '../css/nav.css'
 const AppNavbar = () => {
     const [showModal, setShowModal] = useState(false);
+    const [active, setActive] = useState(false);
+
+    //show active page
+    function handleClick (e) {
+        const { target } = e;
+        
+        if (target) {
+            setActive(active)
+        }
+        setActive(!active)
+        // {active ? 'clicked mx-4' : 'links mx-4'}
+    }
 
     return (
         <>
@@ -19,7 +31,7 @@ const AppNavbar = () => {
                 <Navbar.Toggle aria-controls='navbar' />
                 <Navbar.Collapse id='navbar'>
                     <Nav className='mx-auto'>
-                        <Link className='links mx-4' to='/'>
+                        <Link to='/' className={active ? 'clicked mx-4' : 'links mx-4'} onClick={handleClick}>
                             HOME
                         </Link>
                         <Link className='links mx-4' to='/play'>

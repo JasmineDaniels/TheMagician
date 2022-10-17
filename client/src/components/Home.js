@@ -1,27 +1,33 @@
 import { Container } from "react-bootstrap"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Post from './Post'
+import axios from 'axios'
 
 export default function Home (){
     const [posts, setPosts] = useState([])
-    // useEffect(() => {
-    //     const getAllPosts = async () => {
-    //         const allCard = await axios.get('/', {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             }
-    //         })
-    //         const card = allCard.data;
-    //         setCards(card)
-    //         console.log(card)
-    //     }
-    //     getAllCards()
-    // }, [])
+    useEffect(() => {
+        const getAllPosts = async () => {
+            const allPosts = await axios.get('/api/home/', {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            console.log(allPosts, `this is All Posts`)
+            const recentPosts = allPosts.data;
+            //const postsArr = [allPosts, ...recentPosts]
+            setPosts(recentPosts)
+            console.log(recentPosts, `this is recent posts`)
+        }
+        getAllPosts()
+    }, [])
     return (
         
         <Container>
-            <div>
-                <h1 id="HOME" >HOME</h1>
-            </div>
+            
+            {posts.map((post, index) => (
+                <Post post={post} key={index}/>
+            ))}
+
         </Container>
     )
 }

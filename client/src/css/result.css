@@ -3,9 +3,16 @@
     
 }
 
+.result-info{
+    font-family: 'Magic', 'sans-serif';
+    font-size: 20px;
+}
+
 .result-card{
     width: fit-content;
+    /* height: max-content; */
     /* background-color: transparent; */
+    /* background-color: rgb(250, 213, 143) !important; */
 }
 
 .img-adjust{

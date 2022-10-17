@@ -31,13 +31,6 @@ router.post('/post', authMiddleware, async (req, res) => {
     try {
         console.log(req.user)
         console.log(req.body);
-        // const [ results ] = req.body.userResults
-        // const post = {
-        //     user_id: req.user._id,
-        //     username: req.user.username,
-        //     message: req.body.message,
-            
-        // }
         const newPost = await Post.create(req.body);
         const updateUser = await User.findOneAndUpdate(
             {_id: req.user._id},
