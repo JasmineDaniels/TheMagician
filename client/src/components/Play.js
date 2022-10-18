@@ -30,10 +30,7 @@ export default function Play (){
                 }
             })
             const card = allCard.data;
-            //setCards(card)
             console.log(card)
-            
-        
             shuffleCards(card)
 
 

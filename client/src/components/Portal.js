@@ -18,6 +18,35 @@ export default function Portal() {
     // use this to determine if `useEffect()` hook needs to run again
     //const userDataLength = Object.keys(userData).length;
 
+    const getUserData = async () => {
+        try {
+            //const token = Auth.getToken();
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+            if (!token) {
+                return false;
+                //alert(`Please sign in`)
+            }
+
+            const response = await getMe(token);
+            console.log(response, `This is the response`)
+            // if (!response.ok) {
+            // throw new Error('something went wrong!');
+            // }
+
+            //const user = await response.json();
+            const user = response.data;
+            const cards = response.data.results;
+            const posts = response.data.posts;
+            //console.log(user, `this is the user`)
+            setUserData(user);
+            setUserResults(cards)
+            setUserPosts([...posts])
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     function handleShowPostForm() {
         setShowAddPost(showAddPost => !showAddPost)
     }
@@ -45,27 +74,34 @@ export default function Portal() {
 
     const handlePostSubmit = async (e) => {
         e.preventDefault();
-        if (!message) {
-            alert(`This field is required.`)
-            return;
+        try {
+            if (!message) {
+                alert(`This field is required.`)
+                return;
+            }
+    
+            const token = Auth.getToken()
+            const data = {
+                message: message,
+                user_id: userData._id,
+                username: userData.username,
+                results: userResults.map((user) => {
+                    return user._id
+                }),
+            }
+    
+            const response = await createPost(token, data)
+            if (!response) {
+                alert(`please sign in..`)
+            }
+            setMessage('')
+            setShowAddPost(!showAddPost)
+            setShowPosts(showPosts)
+            getUserData()
+        } catch (error) {
+            console.log(error)
         }
-
-        const token = Auth.getToken()
-
-
-        const data = {
-            message: message,
-            user_id: userData._id,
-            username: userData.username,
-            results: userResults.map((user) => {
-                return user._id
-            }),
-        }
-
-        const response = await createPost(token, data)
-        if (!response) {
-            alert(`please sign in..`)
-        }
+        
     }
 
     const handlePostUpdate = async (e) => {
@@ -88,6 +124,8 @@ export default function Portal() {
             }
             setMessage('')
             setShowUpdatePost(!showUpdatePost)
+
+            getUserData()
         } catch (error) {
             console.log(error)
             alert(`Opps! Something went wrong`)
@@ -96,48 +134,55 @@ export default function Portal() {
 
     const handleDeletePost = async (e) => {
         e.preventDefault();
-        const token = Auth.getToken()
-        const data = {
-            //_id: userPosts._id,
-            _id: userData.posts[0]._id,
-            user_id: userData._id,
-        }
+        try {
+            const token = Auth.getToken()
+            const data = {
+                //_id: userPosts._id,
+                _id: userData.posts[0]._id,
+                user_id: userData._id,
+            }
 
-        const response = await deletePost(token, data)
-        if (!response) {
-            alert(`Could not delete post at this time..`)
-        } alert(`Post was deleted`)
+            const response = await deletePost(token, data)
+            if (!response) {
+                alert(`Could not delete post at this time..`)
+            } 
+            alert(`Post was deleted`)
+            getUserData()
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
     useEffect(() => {
-        const getUserData = async () => {
-            try {
-                //const token = Auth.getToken();
-                const token = Auth.loggedIn() ? Auth.getToken() : null;
+        // const getUserData = async () => {
+        //     try {
+        //         //const token = Auth.getToken();
+        //         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-                if (!token) {
-                    return false;
-                    //alert(`Please sign in`)
-                }
+        //         if (!token) {
+        //             return false;
+        //             //alert(`Please sign in`)
+        //         }
 
-                const response = await getMe(token);
-                console.log(response, `This is the response`)
-                // if (!response.ok) {
-                // throw new Error('something went wrong!');
-                // }
+        //         const response = await getMe(token);
+        //         console.log(response, `This is the response`)
+        //         // if (!response.ok) {
+        //         // throw new Error('something went wrong!');
+        //         // }
 
-                //const user = await response.json();
-                const user = response.data;
-                const cards = response.data.results;
-                const posts = response.data.posts;
-                //console.log(user, `this is the user`)
-                setUserData(user);
-                setUserResults(cards)
-                setUserPosts([...posts])
-            } catch (err) {
-                console.error(err);
-            }
-        };
+        //         //const user = await response.json();
+        //         const user = response.data;
+        //         const cards = response.data.results;
+        //         const posts = response.data.posts;
+        //         //console.log(user, `this is the user`)
+        //         setUserData(user);
+        //         setUserResults(cards)
+        //         setUserPosts([...posts])
+        //     } catch (err) {
+        //         console.error(err);
+        //     }
+        // };
 
         getUserData();
     }, []);
@@ -220,7 +265,7 @@ export default function Portal() {
             </div>
 
             {/* All Users Posts */}
-            <div className={showPosts ? 'card' : 'none'}>
+            <div className={showPosts ? 'card my-3' : 'none'}>
                 <h3 className='card-header'>
                     {userData.username}'s Posts
                 </h3>
@@ -241,7 +286,7 @@ export default function Portal() {
                                 </div>
                                 <div className='card-body  mx-auto'>
                                     <div>
-                                        <p>{post.message}</p>
+                                        <p className='text-center'>{post.message}</p>
                                     </div>
 
                                     <div className={showUpdatePost ? 'row' : 'none'}>
