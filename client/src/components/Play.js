@@ -1,11 +1,5 @@
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-import Card from "./Card"
+import CardContainer from "./CardContainer"
 import { useEffect, useState } from 'react'
-//import cards from '../utils/cards.json'
-//import Result from "./Result"
-//import Card from "./Card"
 import axios from 'axios'
 
 export default function Play (){
@@ -21,7 +15,6 @@ export default function Play (){
         setCards(card)
     }
 
-    // shuffleCards()
     useEffect(() => {
         const getAllCards = async () => {
             const allCard = await axios.get('/api/cards/', {
@@ -42,20 +35,9 @@ export default function Play (){
     return (
         <div>
             <h1 id="PLAY" className="text-center">PLAY</h1>
-            <Card cards={cards}/>
+            <CardContainer cards={cards}/>
         </div>
         
-        // <Container>
-        //     <Row >
-        //         <Col md={2}>
-        //             <Card cards={cards}/>
-        //         </Col>
-        //     </Row>
-            
-        //     <div>
-        //         Results
-        //     </div>
-        // </Container>
     
     )
 }
