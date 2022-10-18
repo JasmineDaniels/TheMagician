@@ -10,15 +10,16 @@ import axios from 'axios'
 
 export default function Play (){
     const [cards, setCards] = useState([])
-    // const shuffleCards = () => {
-    //     for (let i = cards.length - 1; i > 0; i--) {
-    //         const newIndex = Math.floor(Math.random() * (i + 1));
-    //         const oldValue = cards[newIndex]
-    //         cards[newIndex] = cards[i]
-    //         cards[i] = oldValue
+    const shuffleCards = (card) => {
+        for (let i = card.length - 1; i > 0; i--) {
+            const newIndex = Math.floor(Math.random() * (i + 1));
+            const oldValue = card[newIndex]
+            card[newIndex] = card[i]
+            card[i] = oldValue
             
-    //     }
-    // }
+        }
+        setCards(card)
+    }
 
     // shuffleCards()
     useEffect(() => {
@@ -29,8 +30,13 @@ export default function Play (){
                 }
             })
             const card = allCard.data;
-            setCards(card)
+            //setCards(card)
             console.log(card)
+            
+        
+            shuffleCards(card)
+
+
         }
         getAllCards()
     }, [])

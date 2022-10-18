@@ -8,6 +8,7 @@ import { Col } from 'react-bootstrap'
 
 export default function Portal() {
     const [message, setMessage] = useState('')
+    const [newMessage, setNewMessage] = useState('')
     const [showAddPost, setShowAddPost] = useState(false)
     const [showUpdatePost, setShowUpdatePost] = useState(false)
     const [showPosts, setShowPosts] = useState(false)
@@ -37,6 +38,9 @@ export default function Portal() {
         if (inputType === 'message') {
             setMessage(inputValue);
         }
+        if (inputType === 'newMessage') {
+            setNewMessage(inputValue);
+        }
     }
 
     const handlePostSubmit = async (e) => {
@@ -65,21 +69,20 @@ export default function Portal() {
     }
 
     const handlePostUpdate = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
         try {
-            if (!message) {
+            if (!newMessage) {
                 alert(`This field is required.`)
                 return;
             }
 
-            //const token = Auth.getToken()
+            const token = Auth.getToken()
             const data = {
-                _id: userPosts._id,
-                message: message,
-                user_id: userData._id,
+                _id: userData.posts[0]._id,
+                message: newMessage,
             }
 
-            const response = await updatePost(data)
+            const response = await updatePost(token, data)
             if (!response) {
                 alert(`please sign in..`)
             }
@@ -95,7 +98,8 @@ export default function Portal() {
         e.preventDefault();
         const token = Auth.getToken()
         const data = {
-            _id: userPosts._id,
+            //_id: userPosts._id,
+            _id: userData.posts[0]._id,
             user_id: userData._id,
         }
 
@@ -129,7 +133,7 @@ export default function Portal() {
                 //console.log(user, `this is the user`)
                 setUserData(user);
                 setUserResults(cards)
-                setUserPosts(posts)
+                setUserPosts([...posts])
             } catch (err) {
                 console.error(err);
             }
@@ -247,8 +251,8 @@ export default function Portal() {
                                                 <textarea
                                                     className="form-control"
                                                     id="TextArea1"
-                                                    name="message"
-                                                    value={message}
+                                                    name="newMessage"
+                                                    value={newMessage}
                                                     onChange={handleInputChange}
                                                     rows="3"
                                                     placeholder="Message"></textarea>

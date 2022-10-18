@@ -52,7 +52,7 @@ router.post('/post', authMiddleware, async (req, res) => {
 })
 
 //Update A Post
-router.put('/post', async (req, res) => {
+router.put('/post', authMiddleware, async (req, res) => {
     try {
         console.log(req.body)
         //console.log(req.user)
@@ -63,8 +63,8 @@ router.put('/post', async (req, res) => {
             {runValidators: true, returnOriginal: false}
         )
         if(!postData){
-            res.status(404).json("This post doesn't exist.")
-        }   
+           return res.status(404).json({ message: "This post doesn't exist."})
+        } 
         res.json(postData)
         // { message: `Post has been updated.`, postData}
     } catch (error) {

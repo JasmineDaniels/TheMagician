@@ -31,13 +31,13 @@ export const createPost = (token, data) => {
   });
 };
 
-export const updatePost = (data) => {
+export const updatePost = (token, data) => {
   return fetch('/api/users/post', {
     method: 'PUT',
-    // headers: {
-    //   'Content-Type': 'application/json',
-    //   authorization: `Bearer ${token}`,
-    // },
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify(data)
   });
 };
