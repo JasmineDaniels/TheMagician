@@ -1,6 +1,7 @@
 const { model, Schema } = require("mongoose");
-//const Card = require('./Card')
+//const resultSchema = require('./Result')
 const bcrypt = require('bcrypt');
+//const resultSchema = require("./Result");
 
 function validateEmail(email){
     const re = /^([a-z0-9A-Z\d\.-_]+)@([a-z\d-]+)\.([a-z]{2,6})?$/
@@ -30,19 +31,28 @@ const userSchema = new Schema(
         },
         results: [
             {
-                name: String,
-                number: String,
-                arcana: String,
-                img: String,
-                fortune_telling: Array,
-                keywords: Array,
-                meanings: Object,
-                Numerolgy: String,
-                Astrology: String,
-                Affirmation: String,
-                Questions: Array,
+                type: Schema.Types.ObjectId,
+                ref: 'card',
             },
         ],
+        // results: [
+        //     {
+        //         name: String,
+        //         number: String,
+        //         arcana: String,
+        //         img: String,
+        //         fortune_telling: Array,
+        //         keywords: Array,
+        //         meanings: Object,
+        //         Numerolgy: String,
+        //         Astrology: String,
+        //         Affirmation: String,
+        //         Questions: Array,
+        //     },
+        //     {
+        //         timestamps: true
+        //     }
+        // ],
         posts: [
             {
                 type: Schema.Types.ObjectId,
@@ -90,6 +100,20 @@ userSchema.methods.checkPW = async function (password) {
 //       }
 //     })
 // }
+
+// {
+//     name: String,
+//     number: String,
+//     arcana: String,
+//     img: String,
+//     fortune_telling: Array,
+//     keywords: Array,
+//     meanings: Object,
+//     Numerolgy: String,
+//     Astrology: String,
+//     Affirmation: String,
+//     Questions: Array,
+// },
 
 
 const User = model('user', userSchema)

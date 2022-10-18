@@ -1,9 +1,26 @@
-.img-adjust{
-    height: 150px;
-    width: 150px;
+.result-titles{
+    font-family: 'Magic', 'sans-serif';
+    
 }
 
-.img-adjust .card-fit{
+.result-info{
+    font-family: 'Magic', 'sans-serif';
+    font-size: 20px;
+}
+
+.result-card{
+    width: fit-content;
+    /* height: max-content; */
+    /* background-color: transparent; */
+    /* background-color: rgb(250, 213, 143) !important; */
+}
+
+.img-adjust{
+    height: 350px;
+    
+}
+
+.img-adjust .img-fit{
     height: 100%;
     width: 100%;
     object-fit: contain;

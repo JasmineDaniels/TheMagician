@@ -20,11 +20,40 @@ export const createResults = (token, data) => {
   });
 };
 
-// body: JSON.stringify({
-//   cardOne,
-//   cardTwo,
-//   cardThree
-// })
+export const createPost = (token, data) => {
+  return fetch('/api/users/post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data)
+  });
+};
+
+export const updatePost = (token, data) => {
+  return fetch('/api/users/post', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data)
+  });
+};
+
+export const deletePost = (token, data) => {
+  return fetch('/api/users/post', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data)
+  });
+};
+
+
   
 export const createUser = (userData) => {
     return fetch('/api/users/signup', {
