@@ -182,7 +182,7 @@ router.post('/results', authMiddleware, async (req, res) => {
             {runValidators: true, returnOriginal: false}
         )
         if (!updateUser){
-            res.status(404).json({message: `No user with this id.`})
+            return res.status(404).json({message: `No user with this id.`})
         }
         res.status(200).json({message: `successfully added card to users result-set`})
     } catch (error) {
