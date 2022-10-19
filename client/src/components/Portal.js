@@ -115,9 +115,10 @@ export default function Portal() {
         
     }
 
-    const handlePostUpdate = async (e) => {
+    const handlePostUpdate = async (e, index) => {
         e.preventDefault(); 
         try {
+
             if (!newMessage) {
                 alert(`This field is required.`)
                 return;
@@ -125,7 +126,7 @@ export default function Portal() {
 
             const token = Auth.getToken()
             const data = {
-                _id: userData.posts[0]._id,
+                _id: userData.posts[index]._id,
                 message: newMessage,
             }
 
@@ -143,13 +144,13 @@ export default function Portal() {
         }
     }
 
-    const handleDeletePost = async (e) => {
+    const handleDeletePost = async (e, index) => {
         e.preventDefault();
         try {
             const token = Auth.getToken()
             const data = {
                 //_id: userPosts._id,
-                _id: userData.posts[0]._id,
+                _id: userData.posts[index]._id,
                 user_id: userData._id,
             }
 
@@ -287,7 +288,7 @@ export default function Portal() {
                                 <div className='card-header'>
                                     <h5 className='float-start'>{post.username}</h5>
 
-                                    <button className=' btn btn-danger float-end' onClick={handleDeletePost}>
+                                    <button className=' btn btn-danger float-end' onClick={(e) => {handleDeletePost(e, index)}}>
                                         Delete Post
                                     </button>
                                     <button className='btn btn-primary float-end mx-2' onClick={handleShowUpdateForm}>
@@ -315,7 +316,7 @@ export default function Portal() {
                                             </div>
 
                                             <div className='d-flex my-2'>
-                                                <button className='btn btn-primary mx-auto' onClick={handlePostUpdate}>
+                                                <button className='btn btn-primary mx-auto' onClick={(e) => {handlePostUpdate(e, index)}}>
                                                     Publish Post
                                                 </button>
                                             </div>

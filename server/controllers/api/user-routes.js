@@ -32,7 +32,7 @@ router.get('/me', authMiddleware, async (req, res) => {
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
         }).populate({path: "results",  populate: { path: 'results'}, options: {sort: {createdAt: -1}}})
-        .populate({ path: "posts", populate: { path: "reading", populate: { path: 'results'}}})
+        .populate({ path: "posts", populate: { path: "reading", populate: { path: 'results'}}, options: {sort: {createdAt: -1}}})
         if (!getUser){
             res.status(404).json({message: `No user found with this id`})
         }
