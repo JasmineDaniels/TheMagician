@@ -1,5 +1,5 @@
 const Card = require('./Card');
-const Deck = require('./Deck');
+const Reading = require('./Reading');
 const User = require('./User');
 //const Result = require('./Result');
 const Post = require('./Post');
@@ -7,7 +7,7 @@ const Post = require('./Post');
 
 module.exports = { 
     User, 
-    Deck, 
+    Reading, 
     Card,
     Post,
     //Result

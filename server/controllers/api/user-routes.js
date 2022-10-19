@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Card, Post } = require("../../models");
+const { User, Card, Post, Reading } = require("../../models");
 const { signToken, authMiddleware } = require('../../utils/auth')
 
 router.get('/', async (req, res) => {
@@ -11,13 +11,28 @@ router.get('/', async (req, res) => {
     }
 })
 
-// Get A user
+// Get A user - good copy 
+// router.get('/me', authMiddleware, async (req, res) => {
+//     try {
+//         const getUser = await User.findOne({
+//             $or: [{ _id: req.user._id }, { username: req.user.username }]
+//         }).populate({path: "results",  options: {sort: {createdAt: -1}}})
+//         .populate({ path: "posts", populate: { path: "results"}})
+//         if (!getUser){
+//             res.status(404).json({message: `No user found with this id`})
+//         }
+//         res.json(getUser)
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// })
+// ,options: {sort: {createdAt: -1}}
 router.get('/me', authMiddleware, async (req, res) => {
     try {
         const getUser = await User.findOne({
             $or: [{ _id: req.user._id }, { username: req.user.username }]
-        }).populate({path: "results",  options: {sort: {createdAt: -1}}})
-        .populate({ path: "posts", populate: { path: "results"}})
+        }).populate({path: "results",  populate: { path: 'results'}, options: {sort: {createdAt: -1}}})
+        .populate({ path: "posts", populate: { path: "reading", populate: { path: 'results'}}, options: {sort: {createdAt: -1}}})
         if (!getUser){
             res.status(404).json({message: `No user found with this id`})
         }
@@ -122,7 +137,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-//Create users results       
+//       
 // router.post('/results', authMiddleware, async (req, res) => {
 //     try {
 //         //console.log(req.user)
@@ -147,23 +162,22 @@ router.post('/login', async (req, res) => {
 //     }
 // })
 
-//Create users results
 router.post('/results', authMiddleware, async (req, res) => {
     try {
         
         const data = JSON.parse(req.body.body)
         console.log(data)
         //const [ _id, ...rest ] = names
-        const [ one, two, three ] = data
-        const first = one._id
-        const second = two._id
-        const third = three._id
+        // const [ one, two, three ] = data
+        // const first = one._id
+        // const second = two._id
+        // const third = three._id
         //const resultID = data._id
-        
+        const reading = await Reading.create(data)       
         const updateUser = await User.findOneAndUpdate(
             //{_id: req.params.myId},
             {_id: req.user._id},
-            {$addToSet: {results: [{_id: first}, {_id: second},{ _id: third}]}}, //req.params.card_id
+            {$addToSet: {results: reading}}, //req.params.card_id
             //{$addToSet: {results: { _id: resultID}}}, //req.params.card_id
             {runValidators: true, returnOriginal: false}
         )
@@ -175,6 +189,35 @@ router.post('/results', authMiddleware, async (req, res) => {
         res.status(500).json(error)
     }
 })
+
+//Create users results - good copy
+// router.post('/results', authMiddleware, async (req, res) => {
+//     try {
+        
+//         const data = JSON.parse(req.body.body)
+//         console.log(data)
+//         //const [ _id, ...rest ] = names
+//         const [ one, two, three ] = data
+//         const first = one._id
+//         const second = two._id
+//         const third = three._id
+//         //const resultID = data._id
+        
+//         const updateUser = await User.findOneAndUpdate(
+//             //{_id: req.params.myId},
+//             {_id: req.user._id},
+//             {$addToSet: {results: [{_id: first}, {_id: second},{ _id: third}]}}, //req.params.card_id
+//             //{$addToSet: {results: { _id: resultID}}}, //req.params.card_id
+//             {runValidators: true, returnOriginal: false}
+//         )
+//         if (!updateUser){
+//             res.status(404).json({message: `No user with this id.`})
+//         }
+//         res.status(200).json({message: `successfully added card to users result-set`})
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// })
 
 
 

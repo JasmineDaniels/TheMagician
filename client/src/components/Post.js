@@ -15,7 +15,7 @@ function Post({ post }) {
                     </div>
 
                     <div className='row'>
-                        {post.results.map((result, index) => {
+                        {post.reading.results.map((result, index) => {
                             return (
                                 <div className='col-md-4'>
                                     <div className=" card result-card my-2" key={index}>
@@ -24,7 +24,7 @@ function Post({ post }) {
                                         </div>
                                         <div className="card-body">
                                             <div className='img-adjust mx-auto'>
-                                                <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
+                                                <img id={result._id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
                                             </div>
 
 

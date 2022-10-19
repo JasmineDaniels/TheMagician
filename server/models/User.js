@@ -29,30 +29,18 @@ const userSchema = new Schema(
             type: String,
             required: true
         },
+        // results: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'card',
+        //     },
+        // ],
         results: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'card',
+                ref: 'reading',
             },
         ],
-        // results: [
-        //     {
-        //         name: String,
-        //         number: String,
-        //         arcana: String,
-        //         img: String,
-        //         fortune_telling: Array,
-        //         keywords: Array,
-        //         meanings: Object,
-        //         Numerolgy: String,
-        //         Astrology: String,
-        //         Affirmation: String,
-        //         Questions: Array,
-        //     },
-        //     {
-        //         timestamps: true
-        //     }
-        // ],
         posts: [
             {
                 type: Schema.Types.ObjectId,
