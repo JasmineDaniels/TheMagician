@@ -1,0 +1,11 @@
+
+.welcome-card{
+    background-image: url("../images/scroll.png");
+    /* background-size: 120%; */
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    width: fit-content;
+    /* height: 1040px; */
+    /* height: fit-content; */
+}

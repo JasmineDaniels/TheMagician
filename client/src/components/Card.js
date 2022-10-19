@@ -5,8 +5,6 @@ import { Col, Modal } from 'react-bootstrap'
 import { createResults } from '../utils/API';
 
 export default function CardTemplate ({card, selected, setSelected}) {
-    //console.log(card, `this is card from card template`)
-    //const [selected, setSelected] = useState([])
     const [showModal, setShowModal] = useState(false);
     const [flip, setFlip] = useState(false)
 
@@ -42,7 +40,9 @@ export default function CardTemplate ({card, selected, setSelected}) {
         }
         
     }
-
+    const handleCancel = async (e) => {
+        setShowModal(!showModal)
+    }
     const handleFlip = async (e) => {
         setFlip(!flip)
         const example = [...selected, card]
@@ -50,7 +50,6 @@ export default function CardTemplate ({card, selected, setSelected}) {
         console.log(example)
 
         if(selected.length === 2){
-
             setShowModal(true)
             // const [ past, present , future ] = selected
 
@@ -65,8 +64,7 @@ export default function CardTemplate ({card, selected, setSelected}) {
             // const resultThree = await createResults(token, future)
             // if (resultOne && resultTwo && resultThree){
             //     setShowModal(true)
-            // }
-            
+            // } 
         }
     }
     return (
@@ -119,10 +117,10 @@ export default function CardTemplate ({card, selected, setSelected}) {
         </Modal.Body>
         <Modal.Footer>
             <div>
-                <button className='btn btn-success ' onClick={handleSubmit}>
+                <button className='btn btn-success mx-2' onClick={handleSubmit}>
                     Get Reading!
                 </button>
-                <button className='btn btn-danger ' handleModalClose={() => setShowModal(false)}>
+                <button className='btn btn-danger ' onClick={handleCancel}>
                     No thanks
                 </button>
             </div>
