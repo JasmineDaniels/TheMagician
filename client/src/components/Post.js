@@ -1,5 +1,5 @@
 import { Col } from 'react-bootstrap';
-
+import moment from 'moment';
 function Post({ post }) {
     return (
         <Col md={9} className='mx-auto my-3'>
@@ -7,7 +7,7 @@ function Post({ post }) {
             <div className='card post-card'>
                 <div className='card-header'>
                     <h5 className='float-start'>{post.username}</h5>
-                    <p className='float-end'>{post.createdAt}</p>
+                    <p className='float-end'>{moment(post.createdAt).format('LLL')}</p>
                 </div>
                 <div className='card-body  mx-auto'>
                     <div>
