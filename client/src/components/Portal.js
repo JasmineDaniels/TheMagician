@@ -20,8 +20,8 @@ export default function Portal() {
 
     const getUserData = async () => {
         try {
-            //const token = Auth.getToken();
-            const token = Auth.loggedIn() ? Auth.getToken() : null;
+            const token = Auth.getToken();
+            //const token = Auth.loggedIn() ? Auth.getToken() : null;
 
             if (!token) {
                 return false;
