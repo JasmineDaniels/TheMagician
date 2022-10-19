@@ -34,7 +34,7 @@ router.get('/me', authMiddleware, async (req, res) => {
         }).populate({path: "results",  populate: { path: 'results'}, options: {sort: {createdAt: -1}}})
         .populate({ path: "posts", populate: { path: "reading", populate: { path: 'results'}}, options: {sort: {createdAt: -1}}})
         if (!getUser){
-            res.status(404).json({message: `No user found with this id`})
+            return res.status(404).json({message: `No user found with this id`})
         }
         res.json(getUser)
     } catch (error) {
