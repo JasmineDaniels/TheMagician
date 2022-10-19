@@ -21,7 +21,14 @@ export default function CardTemplate ({card, selected, setSelected}) {
                 alert(`Please sign in to get your results!`)
                 return;
             }
-            const results = await createResults(token, selected)
+
+            const data = {
+                results: selected.map((result) => {
+                    return result._id
+                }),
+            }
+            //const results = await createResults(token, selected)
+            const results = await createResults(token, data)
             console.log(results)
             // if (!results){
             //     alert(`Results not found`)  

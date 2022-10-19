@@ -34,13 +34,17 @@ export default function Portal() {
             // throw new Error('something went wrong!');
             // }
 
-            //const user = await response.json();
+            
+            // const user = response.data;
+            // const cards = response.data.results;
+            // const posts = response.data.posts;
+
             const user = response.data;
-            const cards = response.data.results;
+            const results = response.data.results[0].results;
             const posts = response.data.posts;
             //console.log(user, `this is the user`)
             setUserData(user);
-            setUserResults(cards)
+            setUserResults(results)
             setUserPosts([...posts])
         } catch (err) {
             console.error(err);
@@ -81,15 +85,22 @@ export default function Portal() {
             }
     
             const token = Auth.getToken()
+            // const data = {
+            //     message: message,
+            //     user_id: userData._id,
+            //     username: userData.username,
+            //     results: userResults.map((user) => {
+            //         return user._id
+            //     }),
+            // }
+
             const data = {
                 message: message,
                 user_id: userData._id,
                 username: userData.username,
-                results: userResults.map((user) => {
-                    return user._id
-                }),
+                reading: userData.results[0]._id
             }
-    
+
             const response = await createPost(token, data)
             if (!response) {
                 alert(`please sign in..`)
@@ -314,7 +325,7 @@ export default function Portal() {
 
 
                                     <div className='row'>
-                                        {post.results.map((result, index) => {
+                                        {post.reading.results.map((result, index) => {
                                             return (
                                                 <div className='col-md-4'>
                                                     <div className=" card result-card my-2" key={index}>
@@ -323,7 +334,7 @@ export default function Portal() {
                                                         </div>
                                                         <div className="card-body">
                                                             <div className='img-adjust mx-auto'>
-                                                                <img id={result.id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
+                                                                <img id={result._id} src={require(`../images/${result.img}`)} alt='card-back' className='img-fit'></img>
                                                             </div>
 
 
