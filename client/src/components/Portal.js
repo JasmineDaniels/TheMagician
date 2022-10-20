@@ -1,6 +1,6 @@
 //import Result from "./Result"
 //import cards from '../utils/cards.json'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Auth from '../utils/auth';
 import { createPost, getMe, updatePost, deletePost } from '../utils/API';
 import '../css/result.css'
@@ -166,38 +166,39 @@ export default function Portal() {
         
     }
 
-    useEffect(() => {
-        // const getUserData = async () => {
-        //     try {
-        //         //const token = Auth.getToken();
-        //         const token = Auth.loggedIn() ? Auth.getToken() : null;
+    getUserData();
+    // useEffect(() => {
+    //     // const getUserData = async () => {
+    //     //     try {
+    //     //         //const token = Auth.getToken();
+    //     //         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-        //         if (!token) {
-        //             return false;
-        //             //alert(`Please sign in`)
-        //         }
+    //     //         if (!token) {
+    //     //             return false;
+    //     //             //alert(`Please sign in`)
+    //     //         }
 
-        //         const response = await getMe(token);
-        //         console.log(response, `This is the response`)
-        //         // if (!response.ok) {
-        //         // throw new Error('something went wrong!');
-        //         // }
+    //     //         const response = await getMe(token);
+    //     //         console.log(response, `This is the response`)
+    //     //         // if (!response.ok) {
+    //     //         // throw new Error('something went wrong!');
+    //     //         // }
 
-        //         //const user = await response.json();
-        //         const user = response.data;
-        //         const cards = response.data.results;
-        //         const posts = response.data.posts;
-        //         //console.log(user, `this is the user`)
-        //         setUserData(user);
-        //         setUserResults(cards)
-        //         setUserPosts([...posts])
-        //     } catch (err) {
-        //         console.error(err);
-        //     }
-        // };
-
-        getUserData();
-    }, []);
+    //     //         //const user = await response.json();
+    //     //         const user = response.data;
+    //     //         const cards = response.data.results;
+    //     //         const posts = response.data.posts;
+    //     //         //console.log(user, `this is the user`)
+    //     //         setUserData(user);
+    //     //         setUserResults(cards)
+    //     //         setUserPosts([...posts])
+    //     //     } catch (err) {
+    //     //         console.error(err);
+    //     //     }
+    //     // };
+        
+    //     getUserData();
+    // }, []);
 
     if (!userData) {
         return <h2>LOADING...</h2>;
