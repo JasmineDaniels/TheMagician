@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../css/card.css'
 import m01 from '../images/m01.jpg'
 import { Col, Modal } from 'react-bootstrap'
@@ -7,6 +8,7 @@ import { createResults } from '../utils/API';
 export default function CardTemplate ({card, selected, setSelected}) {
     const [showModal, setShowModal] = useState(false);
     const [flip, setFlip] = useState(false)
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -33,8 +35,11 @@ export default function CardTemplate ({card, selected, setSelected}) {
             // }
 
             //SetFlip to false for all 
-
-            window.location.replace('/portal')
+            if(results){
+                navigate('/portal', { replace: true })
+            }
+            //window.location.replace('/portal')
+            //window.location.href = `${PUBLIC_URL}/portal`
         } catch (error) {
             console.log(error)
         }
