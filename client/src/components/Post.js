@@ -1,10 +1,10 @@
 import { Col } from 'react-bootstrap';
 import moment from 'moment';
-function Post({ post }) {
+function Post({ post, index }) {
     return (
         <Col md={9} className='mx-auto my-3'>
 
-            <div className='card '>
+            <div className='card ' key={index}>
                 <div className='row card-header post-header'>
                     <div className='col-md-6 '><h5 className='post-card-header'>{post.username}</h5></div>
                     <div className=' col-md-6 '><p className='post-card-header header-date'>{moment(post.createdAt).format('LLL')}</p></div>

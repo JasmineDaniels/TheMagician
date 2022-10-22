@@ -74,7 +74,7 @@ export default function CardTemplate ({card, selected, setSelected}) {
     }
     return (
         <>
-        <Col md={2}>
+        <Col >
                         
             <div className='card play-card'>
                 <div className={flip ? "card__inner is-flipped" : 'card__inner'} >
