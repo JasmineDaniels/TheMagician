@@ -25,7 +25,7 @@ const AppNavbar = () => {
 
     return (
         <>
-        <Navbar expand='lg'>
+        <Navbar expand='md'>
             <Container fluid>
                 {/* <Navbar.Brand as={Link} to='/'>
                     Google Books Search
