@@ -1,24 +1,25 @@
 import { Col } from 'react-bootstrap';
 import moment from 'moment';
-function Post({ post }) {
+function Post({ post, index }) {
     return (
         <Col md={9} className='mx-auto my-3'>
 
-            <div className='card post-card'>
-                <div className='card-header'>
-                    <h5 className='float-start'>{post.username}</h5>
-                    <p className='float-end'>{moment(post.createdAt).format('LLL')}</p>
+            <div className='card ' key={index}>
+                <div className='row card-header post-header'>
+                    <div className='col-md-6 '><h5 className='post-card-header'>{post.username}</h5></div>
+                    <div className=' col-md-6 '><p className='post-card-header header-date'>{moment(post.createdAt).format('LLL')}</p></div>
+                    
                 </div>
-                <div className='card-body  mx-auto'>
+                <div className='card-body mx-auto' >
                     <div>
                         <p className='text-center'>{post.message}</p>
                     </div>
 
-                    <div className='row'>
+                    <div className='row '>
                         {post.reading.results.map((result, index) => {
                             return (
-                                <div className='col-md-4'>
-                                    <div className=" card result-card my-2" key={index}>
+                                <div className='col-md-4 '>
+                                    <div className=" card mx-auto result-card my-2" key={index}>
                                         <div className="card-header text-center">
                                             <h4>{result.name} </h4>
                                         </div>
@@ -38,6 +39,7 @@ function Post({ post }) {
                     </div>
 
                 </div>
+                <div className='card-footer'></div>
             </div>
 
         </Col>

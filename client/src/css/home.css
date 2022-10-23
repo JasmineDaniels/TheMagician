@@ -1,3 +1,22 @@
-.post-card{
-    width: max-content;
+
+.post-header{
+    /* width: fit-content; */
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+    overflow: hidden !important
+
 }
+
+.header-date{
+    text-align: end;
+}
+
+@media (max-width: 420px){
+    .post-card-header{
+        text-align: center;
+    }
+}
+
+
+
+

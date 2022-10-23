@@ -171,11 +171,11 @@ export default function CardContainer ({ cards }){
     // }
     
     return (
-        <Container>
+        <Container className='fluid'>
             
             <Row >
                 
-                {cards.flatMap((card, index) => (
+                {cards.map((card, index) => (
                     <Card card={card} key={index} selected={selected} setSelected={setSelected}/>
                 ))}
 

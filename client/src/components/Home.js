@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap"
 import React, { useState, useEffect } from 'react'
 import Post from './Post'
 import axios from 'axios'
+import '../css/home.css'
 
 export default function Home (){
     const [posts, setPosts] = useState([])
