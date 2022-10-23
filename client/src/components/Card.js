@@ -47,6 +47,7 @@ export default function CardTemplate ({card, selected, setSelected}) {
     }
     const handleCancel = async (e) => {
         setShowModal(!showModal)
+        // navigate('/', { replace: true })
     }
     const handleFlip = async (e) => {
         setFlip(!flip)
@@ -56,20 +57,6 @@ export default function CardTemplate ({card, selected, setSelected}) {
 
         if(selected.length === 2){
             setShowModal(true)
-            // const [ past, present , future ] = selected
-
-            // const token = localStorage.getItem('id_token')
-            // if (!token){
-            //     alert(`Please sign in to get your results!`)
-            //     return;
-            // }
-
-            // const resultOne = await createResults(token, past)
-            // const resultTwo = await createResults(token, present)
-            // const resultThree = await createResults(token, future)
-            // if (resultOne && resultTwo && resultThree){
-            //     setShowModal(true)
-            // } 
         }
     }
     return (

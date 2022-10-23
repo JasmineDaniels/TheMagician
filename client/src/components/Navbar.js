@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-//import Home from './Home';
 import Auth from '../utils/auth';
 import '../css/nav.css'
 const AppNavbar = () => {
@@ -39,7 +38,7 @@ const AppNavbar = () => {
                         <Link className='links mx-4' to='/play'>
                             PLAY
                         </Link>
-                        {/* if user is logged in show saved books and logout */}
+                        {/* if user is logged in show portal and logout */}
                         {Auth.loggedIn() ? (
                             <>
                             <Link className='links mx-4' as={Link} to='/portal'>
