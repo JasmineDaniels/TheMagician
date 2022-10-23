@@ -11,7 +11,7 @@
     text-align: end;
 }
 
-@media (max-width: 420px){
+@media (max-width: 750px){
     .post-card-header{
         text-align: center;
     }
