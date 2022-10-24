@@ -3,10 +3,26 @@ import '../css/card.css'
 import { Container, Row, } from 'react-bootstrap';
 import Card from './Card'
 
-
 export default function CardContainer ({ cards }){
     const [selected, setSelected] = useState([])
-    //const [showModal, setShowModal] = useState(false);
+    
+    return (
+        <Container className='fluid'>
+            
+            <Row >
+                
+                {cards.map((card, index) => (
+                    <Card card={card} key={index} selected={selected} setSelected={setSelected}/>
+                ))}
+
+            </Row>
+            
+        </Container>
+    
+    )
+}
+
+//const [showModal, setShowModal] = useState(false);
     //const [cardData, setCardData] = useState([])
     // const [flip, setFlip] = useState({
     //     "1": false,
@@ -169,19 +185,3 @@ export default function CardContainer ({ cards }){
     //     }
         
     // }
-    
-    return (
-        <Container className='fluid'>
-            
-            <Row >
-                
-                {cards.map((card, index) => (
-                    <Card card={card} key={index} selected={selected} setSelected={setSelected}/>
-                ))}
-
-            </Row>
-            
-        </Container>
-    
-    )
-}

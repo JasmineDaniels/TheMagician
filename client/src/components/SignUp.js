@@ -43,7 +43,7 @@ export default function SignUp(){
             
             const res = await createUser(userFormData)
             if(!res.ok){
-                alert(`something went wrong`)
+                alert(`Duplicate email detected. Please signin.`)
                 return;
             }
 
@@ -60,7 +60,7 @@ export default function SignUp(){
             
         } catch (error) {
             console.log(error)
-            alert(`Incorrect Email or Password`)
+            alert(`Something went wrong, please checkback later.`)
         }
     }
 

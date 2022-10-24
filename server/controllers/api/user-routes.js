@@ -11,22 +11,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-// Get A user - good copy 
-// router.get('/me', authMiddleware, async (req, res) => {
-//     try {
-//         const getUser = await User.findOne({
-//             $or: [{ _id: req.user._id }, { username: req.user.username }]
-//         }).populate({path: "results",  options: {sort: {createdAt: -1}}})
-//         .populate({ path: "posts", populate: { path: "results"}})
-//         if (!getUser){
-//             res.status(404).json({message: `No user found with this id`})
-//         }
-//         res.json(getUser)
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// })
-// ,options: {sort: {createdAt: -1}}
 router.get('/me', authMiddleware, async (req, res) => {
     try {
         const getUser = await User.findOne({
@@ -45,8 +29,8 @@ router.get('/me', authMiddleware, async (req, res) => {
 //Create A Post
 router.post('/post', authMiddleware, async (req, res) => {
     try {
-        console.log(req.user)
-        console.log(req.body);
+        // console.log(req.user)
+        // console.log(req.body);
         const newPost = await Post.create(req.body);
         const updateUser = await User.findOneAndUpdate(
             {_id: req.user._id},
@@ -69,7 +53,7 @@ router.post('/post', authMiddleware, async (req, res) => {
 //Update A Post
 router.put('/post', authMiddleware, async (req, res) => {
     try {
-        console.log(req.body)
+        // console.log(req.body)
         //console.log(req.user)
         const update = req.body;
         const postData = await Post.findOneAndUpdate(
@@ -90,7 +74,7 @@ router.put('/post', authMiddleware, async (req, res) => {
 
 //Delete A Post
 router.delete('/post', authMiddleware, async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const postData = await Post.findByIdAndDelete({ _id: req.body._id})
     if (!postData) {res.json({ message: `No post with this id.`})}
     const updateUser = await User.findOneAndUpdate(
@@ -106,7 +90,7 @@ router.delete('/post', authMiddleware, async (req, res) => {
 
 // Create a user
 router.post('/signup', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const user = await User.create(req.body);
     if (!user){
         res.status(400).json({message: `Cannot create your account at this time`})
@@ -118,12 +102,11 @@ router.post('/signup', async (req, res) => {
 // Login a user
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.body)
+        // console.log(req.body)
         const user = await User.findOne({ $or: [{username: req.body.username}, {email: req.body.email}]})
         if (!user){
             res.status(400).json({ message: `No user with this email: ${req.body.email}`})
         }
-        //correct pw
         const validPassword = await user.checkPW(req.body.password)
         if (!validPassword){
             res.status(400).json({message: `Sorry Wrong password`})
@@ -161,35 +144,6 @@ router.post('/login', async (req, res) => {
 //         res.status(500).json(error)
 //     }
 // })
-
-router.post('/results', authMiddleware, async (req, res) => {
-    try {
-        
-        const data = JSON.parse(req.body.body)
-        console.log(data)
-        //const [ _id, ...rest ] = names
-        // const [ one, two, three ] = data
-        // const first = one._id
-        // const second = two._id
-        // const third = three._id
-        //const resultID = data._id
-        const reading = await Reading.create(data)       
-        const updateUser = await User.findOneAndUpdate(
-            //{_id: req.params.myId},
-            {_id: req.user._id},
-            {$addToSet: {results: reading}}, //req.params.card_id
-            //{$addToSet: {results: { _id: resultID}}}, //req.params.card_id
-            {runValidators: true, returnOriginal: false}
-        )
-        if (!updateUser){
-            return res.status(404).json({message: `No user with this id.`})
-        }
-        res.status(200).json({message: `successfully added card to users result-set`})
-    } catch (error) {
-        res.status(500).json(error)
-    }
-})
-
 //Create users results - good copy
 // router.post('/results', authMiddleware, async (req, res) => {
 //     try {
@@ -219,7 +173,26 @@ router.post('/results', authMiddleware, async (req, res) => {
 //     }
 // })
 
-
-
+//Create User results
+router.post('/results', authMiddleware, async (req, res) => {
+    try {
+        
+        const data = JSON.parse(req.body.body)
+        // console.log(data)
+        const reading = await Reading.create(data)       
+        const updateUser = await User.findOneAndUpdate(
+            {_id: req.user._id},
+            {$addToSet: {results: reading}}, 
+            //{$addToSet: {results: { _id: resultID}}}, //req.params.card_id
+            {runValidators: true, returnOriginal: false}
+        )
+        if (!updateUser){
+            return res.status(404).json({message: `No user with this id.`})
+        }
+        res.status(200).json({message: `successfully added card to users result-set`})
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 
 module.exports = router;

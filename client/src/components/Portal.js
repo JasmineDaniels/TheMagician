@@ -15,17 +15,14 @@ export default function Portal() {
     const [userData, setUserData] = useState({});
     const [userResults, setUserResults] = useState('')
     const [userPosts, setUserPosts] = useState([])
-    // use this to determine if `useEffect()` hook needs to run again
-    //const userDataLength = Object.keys(userData).length;
 
     const getUserData = async () => {
         try {
-            const token = Auth.getToken();
-            //const token = Auth.loggedIn() ? Auth.getToken() : null;
+            //const token = Auth.getToken();
+            const token = Auth.loggedIn() ? Auth.getToken() : null;
 
             if (!token) {
                 return false;
-                //alert(`Please sign in`)
             }
 
             const response = await getMe(token);
@@ -34,15 +31,10 @@ export default function Portal() {
             // throw new Error('something went wrong!');
             // }
 
-            
-            // const user = response.data;
-            // const cards = response.data.results;
-            // const posts = response.data.posts;
-
             const user = response.data;
             const results = response.data.results[0].results;
             const posts = response.data.posts;
-            //console.log(user, `this is the user`)
+
             setUserData(user);
             setUserResults(results)
             setUserPosts([...posts])
@@ -62,6 +54,8 @@ export default function Portal() {
     function handleShowUpdateForm() {
         setShowUpdatePost(showUpdatePost => !showUpdatePost)
     }
+
+
 
     const handleInputChange = (e) => {
         const { target } = e;
@@ -166,37 +160,7 @@ export default function Portal() {
         
     }
 
-    // getUserData();
     useEffect(() => {
-        // const getUserData = async () => {
-        //     try {
-        //         //const token = Auth.getToken();
-        //         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-        //         if (!token) {
-        //             return false;
-        //             //alert(`Please sign in`)
-        //         }
-
-        //         const response = await getMe(token);
-        //         console.log(response, `This is the response`)
-        //         // if (!response.ok) {
-        //         // throw new Error('something went wrong!');
-        //         // }
-
-        //         //const user = await response.json();
-        //         const user = response.data;
-        //         const cards = response.data.results;
-        //         const posts = response.data.posts;
-        //         //console.log(user, `this is the user`)
-        //         setUserData(user);
-        //         setUserResults(cards)
-        //         setUserPosts([...posts])
-        //     } catch (err) {
-        //         console.error(err);
-        //     }
-        // };
-        
         getUserData();
     }, []);
 

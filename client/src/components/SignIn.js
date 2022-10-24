@@ -5,7 +5,6 @@ import { loginUser } from '../utils/API.js';
 import Auth from '../utils/auth';
 
 export default function SignIn (){
-    // const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [errMessage, setErrMessage] = useState('');
@@ -14,10 +13,6 @@ export default function SignIn (){
         const inputType = target.name;
         const inputValue = target.value;
 
-        //switch
-        // if (inputType === 'username'){
-        //     setUsername(inputValue);
-        // }
         if (inputType === 'email') {
             setEmail(inputValue);
         } 
@@ -51,7 +46,7 @@ export default function SignIn (){
 
             const res = await loginUser(email, password)
             if(!res.ok){
-                alert(`something went wrong`)
+                alert(`Incorrect Email or Password.`)
                 return;
             }
 
@@ -66,7 +61,7 @@ export default function SignIn (){
             
         } catch (error) {
             console.log(error)
-            alert(`Incorrect Email or Password`)
+            alert(`Please Sign up first.`)
         }
     }
 

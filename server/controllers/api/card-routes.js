@@ -44,10 +44,6 @@ router.post('/deck', async (req, res) => {
         await Deck.deleteMany({}) 
         await Deck.create(cards)
         const getDeck = await Deck.find({}).lean()
-        //const test = new Deck(getDeck) 
-        //const shuffle = getDeck.shuffleCards()
-        //const shuffle = test.shuffleCards()
-
         if (!getDeck){
             res.status(404).json({message: `No cards in Deck.`})
         } res.json(getDeck)
@@ -56,16 +52,5 @@ router.post('/deck', async (req, res) => {
     }
     
 })
-
-//One card in the deck - test
-// router.get('/deck/:_id', async (req, res) => {
-//     try {
-//         //Drop Deck collection..
-//         const oneCard = await Deck.findById({_id: req.params._id}) 
-//         res.json(oneCard)
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// })
 
 module.exports = router
