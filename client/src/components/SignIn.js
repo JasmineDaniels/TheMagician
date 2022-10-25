@@ -95,7 +95,7 @@ export default function SignIn (){
                         </div>
 
                         <div className="text-center">
-                            <p>Not a member? <a href="#!">Register</a></p>
+                            {/* <p>Not a member? <a href="#!">Register</a></p> */}
                             <button 
                             type="submit" 
                             className="btn btn-primary btn-block mb-4"
