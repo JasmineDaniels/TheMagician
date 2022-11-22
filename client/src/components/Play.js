@@ -39,6 +39,7 @@ export default function Play() {
 
     useEffect(() => {
         getAllCards()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //className="overlay mx-auto" style={{background: `url(${scroll})`, backgroundRepeat: 'no-repeat', backgroundPosition: "10px", height: '999px', width: 'fit-content'}}
     //className="d-flex justify-content-center"
