@@ -2,9 +2,9 @@
 
 ## Description
 
-The Magician is a fun daily tarot card game app, where users reacieve daily insight and advice for their past, present, and future.
+The Magician is a fun daily tarot card game app, where users receive daily insight and advice for their past, present, and future.
 
-The Magician is a single page application built with React, which allows for fast processing times while only loading necessary resources. The UI is designed with CSS and Bootstrap, an Express Node.js server runtime, JWT token for sign in and encrypted data sent over the API, brcrypt password hashing and decoding, with client and server side validation. Hosted using a MongoDB Atlas/Heroku connection, data store on a MongoDB database with mongoose ODM, and data is retrieved using axois.
+The Magician is a single page application built with React, which allows for fast processing times while only loading necessary resources. The UI is designed with CSS and Bootstrap, an Express Node.js server runtime, JWT token for sign in and encrypted data sent over the API, bcrypt password hashing and decoding, with client and server side validation. Hosted using a MongoDB Atlas/Railway connection, data store on a MongoDB database with mongoose ODM, and data is retrieved using axois.
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ The Magician is a single page application built with React, which allows for fas
 ## How to Play
 
 ### 1. Run over to:
-## https://themagiciantarot.herokuapp.com
+## https://themagician-production.up.railway.app/
 
 ### 2. Create an Account or Sign In 
 
@@ -38,7 +38,7 @@ The Magician is a single page application built with React, which allows for fas
 ## Go Check us out
 
 ### Website: 
-## [The Magician Tarot](https://themagiciantarot.herokuapp.com)
+## [The Magician Tarot](https://themagician-production.up.railway.app/)
 
 ### Demo Image: 
 ![The Magician](./client/src/images/mag-thumbnail.png)
