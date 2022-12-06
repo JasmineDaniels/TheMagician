@@ -5,7 +5,7 @@ import m01 from '../images/m01.jpg'
 import { Col, Modal } from 'react-bootstrap'
 import { createResults } from '../utils/API';
 
-export default function CardTemplate ({card, selected, setSelected, count, setCount}) {
+export default function CardTemplate ({card, selected, setSelected, count, setCount, shake}) {
     const [showModal, setShowModal] = useState(false);
     const [flip, setFlip] = useState(false)
     const navigate = useNavigate();
@@ -50,19 +50,23 @@ export default function CardTemplate ({card, selected, setSelected, count, setCo
         // navigate('/', { replace: true })
     }
     const handleFlip = async (e) => {
+        //setShowShuffle(!showShuffle)
         setFlip(!flip)
         const example = [...selected, card]
         setSelected(example)
         console.log(example)
 
-        setCount(count - 1)
+        if(count > 0){
+            setCount(count - 1)
+        }
+
         if(selected.length === 2){
             setShowModal(true)
         }
     }
     return (
         <>
-        <Col >
+        <Col className={shake ? 'card-shake' : ''} >
                         
             <div className='card play-card'>
                 <div className={flip ? "card__inner is-flipped" : 'card__inner'} >

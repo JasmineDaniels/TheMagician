@@ -3,21 +3,51 @@ import '../css/card.css'
 import { Container, Row, } from 'react-bootstrap';
 import Card from './Card'
 
-export default function CardContainer ({ cards }){
+export default function CardContainer ({ cards, getAllCards }){
     const [selected, setSelected] = useState([])
     const [count, setCount] = useState(3)
+    //const [showShuffle, setShowShuffle] = useState(true)
+    const [shake, setShake] = useState(false)
+
+    const handleShuffle = event => {
+        //setShake(!shake)
+        event.currentTarget.classList.add("disabled")
+    }
     return (
         <>
+        {/* {showShuffle ? "btn btn-danger mx-auto" : "btn btn-danger mx-auto disabled"} */}
+        <div className="d-flex">
+            <button className="btn btn-danger mx-auto" onClick={(event) => {getAllCards();
+                setShake(!shake) 
+                handleShuffle(event)}}>
+                Shuffle Cards
+            </button>
+        </div>
+
         <div className='text-center mt-3'>
                 <h5 className='links'>Choose {count} cards</h5>
         </div>
+
         <Container className='fluid'>
             
             
             <Row >
                 
                 {cards.map((card, index) => (
-                    <Card card={card} key={index} selected={selected} setSelected={setSelected} count={count} setCount={setCount}/>
+                    <Card
+                    //className={shake ? '' : "card-shake"} 
+                    card={card} 
+                    key={index} 
+                    selected={selected} 
+                    setSelected={setSelected} 
+                    count={count} 
+                    setCount={setCount} 
+                    shake={shake}
+                    //setShake={setShake}
+                    // showShuffle={showShuffle}
+                    // setShowShuffle={setShowShuffle}
+                    // handleShuffle={handleShuffle} 
+                    />
                 ))}
 
             </Row>

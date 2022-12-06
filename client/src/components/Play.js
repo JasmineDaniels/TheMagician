@@ -123,13 +123,9 @@ export default function Play() {
                 </div>
             </div>
             <div className={showGame ? null : 'none'}>
-                <div className="d-flex">
-                    <button className="btn btn-danger mx-auto" onClick={() => {getAllCards()}}>
-                        Shuffle Cards
-                    </button>
-                </div>
+                
 
-                <CardContainer cards={cards} />
+                <CardContainer cards={cards} getAllCards={getAllCards} />
             </div>
         </>
 
