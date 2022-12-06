@@ -25,9 +25,9 @@ export default function Home() {
 
         <Container>
             <Col>
-                <div className="card recent-posts">
+                <div className="card recent-posts transparent">
                     <div className="card-header">
-                        <h5> Recent Posts</h5>
+                        <h3 className="links text-center"> Recent Posts</h3>
                     </div>
                     <div className="card-body">
 

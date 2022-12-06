@@ -48,7 +48,7 @@ export default function Play() {
         <>
             <div className={showRules ? 'row ' : 'none'}>
                 <div style={{ height: '1300px' }}>
-                    <div className="card col-md-8 mx-auto">
+                    <div className="card col-md-8 mx-auto transparent">
                         <div className="card-header">
 
                             <h1 className="text-center result-titles">Welcome to The Magician</h1>

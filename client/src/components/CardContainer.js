@@ -6,16 +6,13 @@ import Card from './Card'
 export default function CardContainer ({ cards, getAllCards }){
     const [selected, setSelected] = useState([])
     const [count, setCount] = useState(3)
-    //const [showShuffle, setShowShuffle] = useState(true)
     const [shake, setShake] = useState(false)
 
     const handleShuffle = event => {
-        //setShake(!shake)
         event.currentTarget.classList.add("disabled")
     }
     return (
         <>
-        {/* {showShuffle ? "btn btn-danger mx-auto" : "btn btn-danger mx-auto disabled"} */}
         <div className="d-flex">
             <button className="btn btn-danger mx-auto" onClick={(event) => {getAllCards();
                 setShake(!shake) 
@@ -35,7 +32,6 @@ export default function CardContainer ({ cards, getAllCards }){
                 
                 {cards.map((card, index) => (
                     <Card
-                    //className={shake ? '' : "card-shake"} 
                     card={card} 
                     key={index} 
                     selected={selected} 
@@ -43,10 +39,6 @@ export default function CardContainer ({ cards, getAllCards }){
                     count={count} 
                     setCount={setCount} 
                     shake={shake}
-                    //setShake={setShake}
-                    // showShuffle={showShuffle}
-                    // setShowShuffle={setShowShuffle}
-                    // handleShuffle={handleShuffle} 
                     />
                 ))}
 
