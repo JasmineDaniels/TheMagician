@@ -5,20 +5,25 @@ import Card from './Card'
 
 export default function CardContainer ({ cards }){
     const [selected, setSelected] = useState([])
-    
+    const [count, setCount] = useState(3)
     return (
+        <>
+        <div className='text-center mt-3'>
+                <h5 className='links'>Choose {count} cards</h5>
+        </div>
         <Container className='fluid'>
+            
             
             <Row >
                 
                 {cards.map((card, index) => (
-                    <Card card={card} key={index} selected={selected} setSelected={setSelected}/>
+                    <Card card={card} key={index} selected={selected} setSelected={setSelected} count={count} setCount={setCount}/>
                 ))}
 
             </Row>
             
         </Container>
-    
+        </>
     )
 }
 

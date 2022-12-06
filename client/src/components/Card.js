@@ -5,7 +5,7 @@ import m01 from '../images/m01.jpg'
 import { Col, Modal } from 'react-bootstrap'
 import { createResults } from '../utils/API';
 
-export default function CardTemplate ({card, selected, setSelected}) {
+export default function CardTemplate ({card, selected, setSelected, count, setCount}) {
     const [showModal, setShowModal] = useState(false);
     const [flip, setFlip] = useState(false)
     const navigate = useNavigate();
@@ -55,6 +55,7 @@ export default function CardTemplate ({card, selected, setSelected}) {
         setSelected(example)
         console.log(example)
 
+        setCount(count - 1)
         if(selected.length === 2){
             setShowModal(true)
         }
