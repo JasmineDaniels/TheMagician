@@ -48,7 +48,7 @@ export default function Play() {
         <>
             <div className={showRules ? 'row ' : 'none'}>
                 <div style={{ height: '1300px' }}>
-                    <div className="card col-md-8 mx-auto">
+                    <div className="card col-md-8 mx-auto transparent">
                         <div className="card-header">
 
                             <h1 className="text-center result-titles">Welcome to The Magician</h1>
@@ -123,13 +123,9 @@ export default function Play() {
                 </div>
             </div>
             <div className={showGame ? null : 'none'}>
-                <div className="d-flex">
-                    <button className="btn btn-danger mx-auto" onClick={() => {getAllCards()}}>
-                        Shuffle Cards
-                    </button>
-                </div>
+                
 
-                <CardContainer cards={cards} />
+                <CardContainer cards={cards} getAllCards={getAllCards} />
             </div>
         </>
 

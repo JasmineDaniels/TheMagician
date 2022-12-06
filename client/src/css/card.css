@@ -55,3 +55,28 @@
     transform: rotateY(180deg);
 }
 
+.card-shake{
+    -webkit-animation:shake 1s ease-in-out .1s alternate;
+    animation: shake 1s ease-in-out .1s alternate;
+}
+
+
+@-webkit-keyframes shake{
+    from{
+        -webkit-transform: rotate(15deg);
+    }
+    to{
+        -webkit-transform: rotate(-15deg);
+        -webkit-transform-origin: center center;
+    }
+}
+@keyframes shake {
+    from {
+        -webkit-transform: rotate(15deg);
+    }
+  
+    to {
+        -webkit-transform: rotate(-15deg);
+        -webkit-transform-origin: center center;
+    }
+  }
