@@ -1,10 +1,10 @@
-import { Container } from "react-bootstrap"
+import { Col, Container } from "react-bootstrap"
 import React, { useState, useEffect } from 'react'
 import Post from './Post'
 import axios from 'axios'
 import '../css/home.css'
 
-export default function Home (){
+export default function Home() {
     const [posts, setPosts] = useState([])
     useEffect(() => {
         const getAllPosts = async () => {
@@ -22,12 +22,24 @@ export default function Home (){
         getAllPosts()
     }, [])
     return (
-        
+
         <Container>
-            
-            {posts.map((post, index) => (
-                <Post post={post} key={index}/>
-            ))}
+            <Col>
+                <div className="card recent-posts">
+                    <div className="card-header">
+                        <h5> Recent Posts</h5>
+                    </div>
+                    <div className="card-body">
+
+                        {posts.map((post, index) => (
+                            <Post post={post} key={index} />
+                        ))}
+
+                    </div>
+                </div>
+
+            </Col>
+
 
         </Container>
     )
